@@ -1,0 +1,22 @@
+ul.breadcrumb li{ padding:0px 14px; font-size:11px; text-transform:uppercase; display:inline-block; list-style:none; background:url(../images/style1/arrow.png) no-repeat -10px -3px;}
+.departments > li > a{ padding:7px 0px;  background-image:url(../images/style1/arrow.png); background-repeat:no-repeat; background-position: right 4px; display:block;}
+.action_buttonbar button.checkout{ float:right; padding-right:28px; background:url(../images/style1/arrow.png) right -20px no-repeat;}
+.checkout_discount{ float:right; width:305px;border:solid 1px #e0e0e0; border-width:2px 0px; padding:14px 16px 16px; background:url(../images/style1/cart_coupon.png) no-repeat right bottom #f9f8f6;}
+nav .minicart{ float:right;margin:5px 0px 3px 0px; padding: 14px 10px 14px 40px; background:url(../images/style1/cart_icon.png) no-repeat 7px center; position:relative; text-decoration:none;}
+.cart_drop .darw{ display:block; background:url(../images/style1/cart_top.png) no-repeat center bottom; width:7px; height:7px; position:absolute; left:181px; top:-8px;}
+.jcarousel-skin-tango .jcarousel-prev-horizontal { background: transparent url(../images/style1/slider_left_arrow.png) no-repeat center;}
+.jcarousel-skin-tango .jcarousel-next-horizontal { background: transparent url(../images/style1/slider_right_arrow.png) no-repeat center;}
+.departments > li > ul > li a:hover{color:#2d2b29; font-weight:bold; background:url(../images/style1/sub_arw.png) no-repeat left center;}
+.departments > li > ul > li a.active{color:#2d2b29; font-weight:bold; background:url(../images/style1/sub_arw.png) no-repeat left center;}
+
+/*-----------------------------------COLOR THEME HERE*/
+.navigation_container, .products_grid li .product_info, ul.sub_menu > li > ul > li:hover, #product_detail, .product-tabs, .col_right .block-title{ border-bottom-color:#f4b801;}
+header .top_links > li.highlight a,
+nav .primary_nav li.active > a, .products_grid .price_info button .pr_add, .products_list li .price_info button .pr_add, .sideNavCategories > ul.departments > li:hover, ul.departments > ul.subcat > li:hover, .cart_drop .cart_bottom a{ background:#f4b801;}
+nav .minicart span b,
+footer .footer_customblock .shipping_info span, ul.breadcrumb li.active a, .product_rightcol .pr_price big, footer .footer_links li a:hover, #shopping-cart-table tr td span.pr_info, #totals-table .total, .cart_drop ul li span.price, .cart_drop .cart_bottom .subtotal_menu big, ul.simpleTabsNavigation li a.current{color:#f4b801;}
+nav a.minicart_link:hover{color:#f4b801;}
+footer, ul.sub_menu, .sideNavCategories > ul, ul.sub_menu > li > ul, .checkout_tax .shipping_tax, .checkout_discount, .cart_drop, ul.simpleTabsNavigation li a.current {border-top-color:#f4b801;}
+.flexslider .flex-direction-nav li a:hover, nav .primary_nav > li > a:hover, nav .primary_nav > li:hover > a, .product_rightcol .add_to_buttons button.add_cart, .action_buttonbar button.checkout, #shopping-cart-table tr td a.remove:hover, #shopping-cart-table tr td button.update:hover, nav .minicart .remove a.rm:hover, .pagination .links b, .rsearch a:hover, .sideNavCategories > ul.departments > li > a:hover, .sideNavCategories > ul.departments > li > a.active{ background-color:#f4b801;}
+.products_grid li:hover img, .products_list li:hover img{ border-color:#f4b801}
+.flex-caption{ border-left-color:#f4b801}

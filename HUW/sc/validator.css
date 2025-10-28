@@ -1,0 +1,36 @@
+.highlight
+{
+   background-image: none !important;
+    background-color: #FFFFFF;  
+    color: Black;
+}
+/*#CAE4FF !important*/
+.alertbox
+{
+    position: absolute;
+    padding-left: 300px;
+    width: 1px;
+    background: url(../sc/NewArrow.png) no-repeat right top;
+    padding-right:0px;
+    color: Black;
+}
+
+.alertbox div
+{   min-height: 35px;
+    width: 200px;
+    text-align:center;
+    vertical-align:middle;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: #D9387E;
+    color: #FFFFFF;
+}
+
+
+input[type="password"], input[type="text"] {
+    border: 1px solid #999999;
+    width: 150px;
+    height: 22px;
+}

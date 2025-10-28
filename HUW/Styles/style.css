@@ -1,0 +1,13 @@
+
+.txt_rtbox{float:left;width:400px;height:16px;border:1px solid #E5E5E5;}
+.txt_rtbox2{float:left;width:210px;height:16px;border:1px solid #E5E5E5;}
+.spanclass {
+    color:#B5B5B5;
+    font-size:11px;
+    font-style:italic;
+    font-weight:normal;
+    margin-left:280px;
+    float:left;clear:both;
+}
+
+

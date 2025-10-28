@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="313630c81b8d477b923606991a1de9fd" Name="Diagram1">
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.AddressType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.BusinessType" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Cashback_Coupons" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Cashback_Coups_Transactions" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.CashBackTable" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Category" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.CBC_Data_Tree" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.CheckOutPaymentTransaction" Width="1.5" PointX="9.75" PointY="63.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.CheckOutUserProductTransaction" Width="1.5" PointX="12" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Configuration" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Content" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Country" Width="1.5" PointX="10.5" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.def_accesss" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Deff_GST" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Delivery_Invoice_Excel" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Delivery_Invoice_Excel_Upload_Details" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Delivery_Invoice_Pdf" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.FeaturesCategory" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.FeaturesSubCategory" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Medicines_tbl" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.NoftifyMe" Width="1.5" PointX="9.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.OfflineSale" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.PaymentTransaction" Width="1.5" PointX="12.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.PendingCashBackTable" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.PinCodesInformation" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Prescription_Upload_tbl" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Processed_By_Info" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.ProductFeature" Width="1.5" PointX="9.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.ProductInventory" Width="1.5" PointX="15" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.ProductReview" Width="1.5" PointX="12.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Product" Width="1.5" PointX="7.5" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.ProductsGallery" Width="1.5" PointX="9.75" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.ProductSpecification" Width="1.5" PointX="12.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.RelatedProduct" Width="1.5" PointX="9.75" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Remitting_Excel_Data" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Role" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Routine_Customers_Table" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.SpecificationType" Width="1.5" PointX="10.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.State" Width="1.5" PointX="10.5" PointY="58.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Stored_Temp_File" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.SubCategory" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.SubProduct" Width="1.5" PointX="9.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.SuperCategory" Width="1.5" PointX="0.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.TaxesConfiguration" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.tbl_accesspages" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_AdditionalInfo" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_CheckoutOrderComments" Width="1.5" PointX="12" PointY="67.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Coupon_Info" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Covid" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Diagnostictests" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_InpackingBox_Details" Width="1.5" PointX="19.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.tbl_Loghistory" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Outofstock" Width="1.5" PointX="20.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Packing_Box" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Prescriptionorders" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Presecription_Info" Width="1.5" PointX="21.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Temp_Deliver_Excel_Record" Width="1.5" PointX="19.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.UserAddress" Width="1.5" PointX="12.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.UserProductTransaction" Width="1.5" PointX="15" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.UserProductTransactionSpecification" Width="1.5" PointX="17.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.User" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.dbo_Newsletter" Width="1.5" PointX="21.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Action" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_AWB" Width="1.5" PointX="22.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Need_Help" Width="1.5" PointX="22.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Need_Help_Comments" Width="1.5" PointX="22.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Offered_Products" Width="1.5" PointX="23.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_OrderComments" Width="1.5" PointX="15" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Tbl_Promo_Codes" Width="1.5" PointX="10.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Page1" Width="1.5" PointX="22.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.PincodeInfo" Width="1.5" PointX="23.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.RetunOrder" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zoninnovative_Huw2022Model.Temp_File_Data" Width="1.5" PointX="24.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_FeaturesCategories_BusinessTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_Categories_SuperCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_SubCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutPaymentTransactions_Tbl_Promo_Codes" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutPaymentTransactions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_CheckOutPaymentTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_Tbl_CheckoutOrderComments_CheckOutPaymentTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_SubProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_UserAddresses" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_UserAddresses1" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_CheckOutUserProductTransactions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_States_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserAddresses_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_FeaturesSubCategories_FeaturesCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductFeatures_ProductSubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_NoftifyMe_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_PaymentTransactions_Tbl_Promo_Codes" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_PaymentTransactions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_Tbl_OrderComments_PaymentTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_PaymentTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductFeatures_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductInventory_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductInventory_SubProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductReviews_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductReviews_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_Products_SubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductsGallery_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductSpecifications_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_RelatedProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_RelatedProducts_RelatedProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_SubProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_ProductSpecifications_SpecificationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactionSpecifications_ProductSpecifications" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserAddresses_States" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_SubProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_UserAddresses" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_UserAddresses1" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="zoninnovative_Huw2022Model.FK_UserProductTransactionSpecifications_UserProductTransactions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,250 @@
+
+<body>
+    <table width="100%" border="1" style="margin:0 auto;border-collapse:collapse;font-size:10px;border-color:#999;border-radius:5px;line-height:13px;font-family:Lucida Grande,Lucida Sans Unicode,Lucida Sans,DejaVu Sans,Verdana,sans-serif;" cellpadding="3" cellspacing="5">
+        <tbody>
+            <tr>
+                <td colspan="13">
+                    <div style="width:50%;float:left;padding-bottom:15px;">
+                        <img src="https://www.healthurwealth.com/assets/images/logo.png" width="50%" style="margin-left:5%;margin-top:5px;">
+
+                        <div style="margin-top:20px;">INVOICE <strong>#HUW00000##lblOrderid##</strong></div>
+                        <div style="padding-top:8px;">INVOICE Date: ##lblDate##</div>
+                    </div>
+
+                    <div style="width:50%;float:left;line-height:32px;text-align:right;">
+                        <span class="corp" style="background: #020000;padding: 3px 17px;margin-right: 5px;color: #fff;font-weight: 900;margin-top: 10px;font-size: 14px;display: inline-block;">##lblPaymentmode##</span>
+                        <!--<span style="background: #020000;padding: 3px 17px;margin-right: 5px;color: #fff;font-weight: 900;margin-top: 10px;font-size: 14px;display: inline-block;">COD</span>-->
+                    </div>
+                    <div style="font-size: 16px;float: right;margin-top: 24px;display: inline-block;">
+                        <small>Amount:</small> <span style="font-size:16px;float:right;font-weight: bold;"><span style="font-size:16px;margin-right:10px;float:right;">₹ ##Amount##</span></span><br />
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="60%" colspan="7">
+                    Name &amp; Shipping Address
+                    <span class="doc" style="font-size:14px;float:right;position:relative;">Doctor Name/Hospital Name: <strong>##lblDoctorName##</strong></span>
+                </td>
+                <td width="20%" colspan="5">
+                    <!--Billing Address--> Order Details
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <strong>##lblUsername##</strong>
+                    <div>
+                        ##lblAddress##
+                    </div>
+                    <div>
+                        ##lblLocation## <span style="">500091</span>
+                    </div>
+                    <div>
+                        ##lblstate##
+                    </div>
+                    <div>
+                        <strong style="float:left">##lblMobile##</strong>
+                    </div>
+                    <input type="text" value="Telangana" id="Statename" hidden="">
+                </td>
+                <td valign="top" colspan="6" style="line-height:20px;">
+                    <!-- <div>
+                        H No 2-150 Road No .2 ,</br>Himagiri Nagar Colony, Gandhamguda, Gandipet Mandal ,</br>Peneual gospel church
+                    </div>
+                    <div>
+                        Hyderabad  <span style='float:right'>500091</span>
+                    </div>
+                    <div >
+                        Telangana
+                    </div> -->
+
+                    <div>
+                        Payment Mode : <span style="float:right"><strong>##lblPaymentmode##</strong></span>
+                    </div>
+                    <div>
+                        GST No : <span style="float:right">36AAUPK4988K1ZO</span>
+                    </div>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="20">
+                    S.No
+                </td>
+                <td width="25" class="widthp">
+                    Product (Brand)
+                </td>
+
+
+                <td width="10">
+                    HSN Code
+                </td>
+                <td width="10">
+                    Batch No
+                </td>
+                <td width="10">
+                    SCH
+                </td>
+                <td width="10">
+                    MFd
+                </td>
+                <td width="10">
+                    Exp. Date
+                </td>
+                <td>
+                    Qty
+                </td>
+
+                <td width="10">
+                    Price
+                </td>
+                <td>
+                    <span id="CGST">
+                        GST type
+                    </span>
+
+                </td>
+                <td>
+                   Tax Rate
+                </td>
+                <td>
+                   Tax Amount
+                </td>
+                <td>
+                    Amount
+                </td>
+            </tr>
+            ##Productdetails##
+            <tr>
+                <td colspan="8">
+                    Shiping Charges
+                </td>
+                ##Shippingdetails##
+                <td align="right"> ##Shippingcharges##</td>
+                <!--<td align="right">59.32</td>
+                <td>##Shippingdetails##</td>
+                <td align="right"> 70.00</td>-->
+
+            </tr>
+
+
+
+            <tr>
+                <td colspan="7">
+                    Total
+                </td>
+                <td>
+                    ##lbltotalquantity##
+                </td>
+                <td> <label id="producttotal"></label></td>
+				<td></td>
+                <td>
+                   
+                </td>
+                <td>
+                    <label id="gsttotal"></label>
+                </td>
+                <td colspan="" align="right">
+                    <strong>##lblTotalvalue##</strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="13">
+                    Prices are inclusive of all applicable taxes
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                    <u>If Undelivered, please return to :</u><br>
+                    <strong>6-3-850/1, Ground floor, Shop no 4, Sirisha plaza,<br> main road, Dharam Karan Rd, Ameerpet,<br> Hyderabad, Telangana 500016</strong>
+                </td>
+                <td colspan="3">
+                    <div>
+                        © Registered Copyright ® Registered Trademark<br />
+                        Good once sold will not be taken back or exchanged<br />
+                        Overcharged if any by oversight is refundable
+                        <!--This is a computer generated invoice. No signature required. <br>
+                        ** Conditions Apply. Please refer to the product page for more details-->
+                    </div>
+                </td>
+                <td colspan="6">
+                    <div>
+                        Consult your Doctor before use of medicine <br />
+                        Always Bring Doctor Prescription<br />
+                        WE ACCEPT CREDIT/DEBIT CARDS/WALLETS<br />
+                        Thank you<span style="float:right;">E & O.E</span>
+                    </div>
+                </td>
+                <td colspan="3">
+                    <span style="padding-top:15px;">D.L.No.:<strong> 282/HD1/AP/2010</strong></span>
+                    <span style="padding-top:5px;">D.L.No.:<strong> 545/HD/AP/2006/W</strong></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="13">
+                    This is a computer generated invoice. No signature required.<br />
+                    ** Conditions Apply. Please refer to the product page for more details
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div style="margin: 10px auto 0;display: table;">
+        <input type="button" value="Save" onclick="savepdf()" id="printPageButton" class="button_small greyishBtn  fl_right" style="background: green;color:#fff; padding: 10px 20px; height: auto; width: auto;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Print" id="printPageButton" onClick="window.print();" style="background: black;color:#fff; padding: 10px 20px; height: auto; width: auto;" />
+    </div>
+
+</body>
+<style>
+    input {
+        background-color: transparent;
+        border: 0px solid;
+        height: 20px;
+        width: 160px;
+    }
+
+    .no-outline:focus {
+        outline: none;
+    }
+
+    @media print {
+        #printPageButton {
+            display: none;
+        }
+
+        /*.doc {
+            font-size: 11px !important;
+            float: left !important;
+            display: block;
+        }*/
+        td.widthp {
+            width: 220px !important;
+            display: inline-block;
+        }
+
+        .corp {
+            background: #020000;
+            padding: 3px 17px;
+            margin-right: 5px;
+            color: #fff;
+            font-weight: 900;
+            margin-top: 10px;
+            font-size: 14px;
+            display: inline-block;
+        }
+    }
+
+    @page {
+        size: A4;
+        margin: .5in .5in .5in .5in;
+        border: transparent;
+        orphans: 3;
+        widows: 2;
+        /*height:500px !important;*/
+    }
+
+    @page {
+        size: landscape;
+    }
+</style>

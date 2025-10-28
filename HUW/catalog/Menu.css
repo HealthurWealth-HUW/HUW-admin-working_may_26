@@ -1,0 +1,258 @@
+.mk-body mynt-layout-new
+{
+    background: none repeat scroll 0 0 #F8F8F8;
+    border-top: 3px solid #D9387E;
+}
+
+.mk-coupon-trigger span.mk-btn-coupon {
+    cursor: pointer;
+}
+.mk-f-left {
+    float: left;
+}
+.mk-f-right {
+    float: right;
+}
+.mk-hide {
+    display: none;
+}
+.mk-clear {
+    clear: both;
+}
+.mk-inline {
+    display: inline;
+}
+
+.mk-wrapper {
+    margin: 0 auto;
+    overflow-x: hidden;
+    width: 980px;
+}
+.mk-wrapper .mk-left-festival-column {
+    background-repeat: repeat-y;
+    bottom: 0;
+    margin-left: -85px;
+    position: absolute;
+    top: 0;
+    width: 80px;
+}
+.mk-wrapper .mk-right-festival-column {
+    background-repeat: repeat-y;
+    bottom: 0;
+    margin-right: -85px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+}
+.mk-site-main h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.mk-site-nav-wrapper .mk-second-col ul li a {
+    color: #171717;
+    font-size: 13px;
+}
+.mk-site-nav-wrapper .mk-occasion {
+    background: none repeat scroll 0 0 #66BCDA;
+    display: block;
+    height: 160px;
+    width: 340px;
+}
+.mk-site-nav-wrapper .mk-occasion ul {
+    display: inline-block;
+    margin: 25px 0 0;
+    text-align: center;
+    width: 150px;
+}
+.mk-site-nav-wrapper .mk-occasion ul.mk-list-overflow {
+    width: 150px;
+}
+.mk-site-nav-wrapper .mk-occasion ul li a {
+    font-size: 13px;
+}
+.mk-site-nav-wrapper .mk-type {
+    background: none repeat scroll 0 0 #66BCDA;
+    display: block;
+    height: 160px;
+    text-align: center;
+    width: 340px;
+}
+.mk-site-nav-wrapper .mk-type ul {
+    display: inline-block;
+    margin: 30px 0 0;
+    width: 150px;
+}
+.mk-site-nav-wrapper .mk-type ul.mk-list-overflow {
+    margin: 38px 0 0;
+    width: 150px;
+}
+.mk-site-nav-wrapper .mk-type ul li a {
+    font-size: 13px;
+}
+.mk-site-nav .mk-mymyntra-dash {
+    display: block;
+    height: 180px;
+    text-align: center;
+    z-index: 2;
+}
+.mk-site-nav .mk-free-shipping-cb {
+    background: none repeat scroll 0 0 #66BCDA;
+    display: block;
+    height: 180px;
+    text-align: center;
+    width: 792px;
+    z-index: 2;
+}
+.mk-site-nav .mk-mymyntra-dash {
+    background: none repeat scroll 0 0 #F2F2F2;
+    width: 784px;
+}
+.mk-site-nav-wrapper .mk-free-shipping h2, .mk-site-nav .mk-free-shipping-cb h2 {
+    color: #262626;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 55px 0 0;
+    text-transform: uppercase;
+}
+.mk-site-nav-wrapper .mk-free-shipping h5, .mk-site-nav .mk-free-shipping-cb h5 {
+    color: #A1A1A1;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.mk-site-nav {
+    height: 180px;
+}
+.mynt-layout-new .mk-site-nav {
+    height: auto;
+    position: relative;
+    z-index: 1003;
+}
+.mk-site-nav div ul li a {
+    color: #333333;
+    display: block;
+    font: 14px/20px din-med;
+    text-decoration: none;
+}
+.mk-site-nav div ul li a.mk-hover, .mk-site-nav div ul li a.mk-active {
+    color: #000000;
+   
+}
+.mk-site-nav .mk-level-1 {
+    background-color: #D9387E !important;
+    background-repeat: repeat !important;
+    border-radius: 0;
+    margin: 0;
+    position: relative;
+    width: 188px;
+    z-index: 5;
+}
+.mynt-layout-new .mk-site-nav .mk-level-1 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 2px solid #C8D3DC;
+    float: none;
+    position: relative;
+    width: 980px;
+}
+.mk-site-nav .mk-level-1 ul {
+    height: 160px;
+    padding: 10px 0 10px 10px;
+    width: 178px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-1 ul {
+    height: auto;
+    padding: 0;
+    width: 980px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-1 ul li a {
+    color: #333333;
+    font: 17px/28px din-med;
+}
+.mynt-layout-new .mk-site-nav .mk-level-1 ul li a.mk-persist {
+    background-color: #FFFFFF;
+}
+
+
+.mk-site-nav .home-icon:hover {
+    background-position: -234px -139px;
+}
+.mk-level-1.mk-f-left ul li {
+    height: 24px;
+}
+.mynt-layout-new .mk-level-1.mk-f-left ul li {
+    display: inline-block;
+    height: 36px;
+}
+.mk-site-nav .mk-level-1 ul li a {
+    color: #333333;
+    font: 17px/24px din-med;
+}
+.mk-site-nav .mk-level-1 ul li a em {
+    color: #FFFFFF;
+    display: inline;
+    font-size: 17px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-1 ul li a {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0);
+    height: 32px;
+    padding: 0 10px;
+}
+.mk-site-nav .mk-level-2 {
+    background: none repeat scroll 0 0 #F2F2F2;
+    left: 188px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    z-index: 4;
+}
+.mynt-layout-new .mk-site-nav .mk-level-2 {
+    border-bottom: 4px solid #D6D6D6;
+    height: 260px;
+    left: 0;
+    position: relative;
+    width: 980px;
+}
+.mk-site-nav .mk-level-2 ul {
+    height: 180px;
+    overflow: hidden;
+    padding: 0;
+    width: 792px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-2 ul {
+    height: 260px;
+    overflow: hidden;
+    padding: 0;
+    width: 980px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-2 ul.images {
+    margin: 20px auto;
+    width: 792px;
+}
+.mynt-layout-new .mk-site-nav .mk-level-2 ul.images .filler {
+    display: none;
+}
+.mk-site-nav .mk-level-2 ul li {
+    float: left;
+    height: 160px;
+    margin-left: 10px;
+    padding: 10px 0;
+    white-space: nowrap;
+    width: 178px;
+}
+
+#menu #homepage {
+    display: block;
+    float: left;
+    height: 38px;
+    margin-bottom: 0;
+    min-width: 15px;
+    padding: 4px 16px;
+    position: relative;
+}
+#menu #homepage {
+    background-color: #7AAC4C !important;
+    margin-left: 0;
+}

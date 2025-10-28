@@ -1,0 +1,288 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="Admin_AdminMaster" %>
+
+<style>
+    .label {
+        color: white;
+        padding: 8px;
+        font-family: Arial;
+    }
+
+    .danger {
+        background-color: #f44336;
+    }
+    /* Red */
+</style>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+  
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style type="text/css">
+        @import url("../css/style.css");
+        @import url("../css/forms.css");
+        @import url("../css/forms-btn.css");
+        @import url("../css/menu.css");
+        @import url('../css/style_text.css');
+        @import url("../css/datatables.css");
+        @import url("../css/fullcalendar.css");
+        @import url("../css/pirebox.css");
+        @import url("../css/modalwindow.css");
+        @import url("../css/statics.css");
+        @import url("../css/tabs-toggle.css");
+        @import url("../css/system-message.css");
+        @import url("../css/tooltip.css");
+        @import url("../css/wizard.css");
+        @import url("../css/wysiwyg.css");
+        @import url("../css/wysiwyg.modal.css");
+        @import url("../css/wysiwyg-editor.css");
+    </style>
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="https://www.healthurwealth.com//assets/images/favicon.png" type="image/x-icon" />
+
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.backgroundPosition.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.1.8.17.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.select.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.spinner.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/supersubs.js"></script>
+    <script type="text/javascript" src="js/jquery.datatables.js"></script>
+    <script type="text/javascript" src="js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="js/jquery.smartwizard-2.0.min.js"></script>
+    <script type="text/javascript" src="js/pirobox.extended.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="js/jquery.elastic.source.js"></script>
+    <script type="text/javascript" src="js/jquery.customInput.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/jquery.metadata.js"></script>
+    <script type="text/javascript" src="js/jquery.filestyle.mini.js"></script>
+    <script type="text/javascript" src="js/jquery.filter.input.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.graphtable-0.2.js"></script>
+    <script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.image.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.link.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.table.js"></script>
+    <script type="text/javascript" src="js/plugins/wysiwyg.rmFormat.js"></script>
+
+    <link href="Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/js/grid.locale-en.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="http://www.ok-soft-gmbh.com/jqGrid/json2.js"></script>
+    <script src="../Scripts/js/jquery-ui-1.8.20.min.js" type="text/javascript"></script>
+    <script src="js/custom.js" type="text/javascript"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form name="searchForm" id="searchForm" clientidmode="Static" runat="server">
+        <div id="wrapper">
+            <div id="container" style="margin-top: 18px;">
+
+                <div class="hide-btn top">
+                    <br />
+                </div>
+                <div class="hide-btn center"></div>
+                <div class="hide-btn bottom"></div>
+
+                <div id="top">
+                    <h1>
+                        <img src="https://www.healthurwealth.com//assets/images/logo.png" style="background:#fff;padding: 0 0 16px 25px; border-left-width: 0px;"><%--<a href="./"></a>--%></h1>
+                    <div id="labels">
+                        <ul>
+                            <li><a href="#" class="user"><span class="" style="background: #4abcba;
+    padding: 3px 10px;
+    margin-right: 8px;
+    margin-left: -5px;
+    border-left: 1px solid #f1f1f1;">
+                                <asp:Label ID="lblLoginUser" runat="server"></asp:Label></span></a></li>
+                            <li><a href="#" class="settings"></a></li>
+                            <li class="subnav">
+                                <asp:LinkButton ID="lnkNotifications" runat="server" class="messages" OnClick="lnkNotifications_Click"></asp:LinkButton>
+                            </li>
+                            <li class="subnav">
+                                <asp:LinkButton ID="LinkButton1" runat="server" class="logout" OnClick="LinkButton1_Click"></asp:LinkButton>
+                            </li>
+                            <li></li>
+                        </ul>
+
+                    </div>
+                    <div id="menu">
+                        <ul>
+                            <li class="current"><a href="Home.aspx">Home</a></li>
+                            <li><a href="SearchOrders.aspx">Search Orders</a></li>
+                             <li><a href="Productssold.aspx">Sold Products</a></li>
+                            <li><a href="AddProducts.aspx">Add Products</a></li>
+                            <li><a href="ProductSearch.aspx">View Product</a></li>
+                            <li id="liUserInfo" runat="server"><a href="UserInfo.aspx">User Info</a></li>
+                            <li><a href="SuperCategoryInfo.aspx">Super Category</a></li>
+                            <li><a href="ProductSearch.aspx">Search Products</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="left">
+                    <div class="box submenu">
+                        <div class="content">
+                            <ul>
+                                <li id="liAddProductsSidetab" runat="server"><a href="AddProducts.aspx">Add Products</a></li>
+                                <li id="liActivateProductsSidetab" runat="server"><a href="ActivateProducts.aspx">Activate Products</a></li>
+                                <li id="liProductSearchSidetab" runat="server"><a href="ProductSearch.aspx">Search Products</a></li>
+                                <li id="liUserInfoSidetab" runat="server"><a href="UserInfo.aspx">User Information</a></li>
+                                <li id="liAWB" visible="false" runat="server"><a href="AddAWB.aspx">Upload AWB</a></li>
+                                <li id="liaddemployee" visible="false" runat="server"><a href="addemployee.aspx">Add Employee</a></li>
+                                <li id="liemplist" visible="false" runat="server"><a href="Employeelist.aspx">EmployeeList</a></li>
+
+                                <%--<li><a href="SearchOrders.aspx">Search Orders</a></li>--%>
+                                <li><a href="#">Search Orders</a>
+                                    <ul>
+                                        <li id="liSearchOrdersSidetab" runat="server"><a href="SearchOrders.aspx">Search Orders</a></li>
+                                        <li id="liCheckoutSearchOrdersSidetab" runat="server"><a href="CheckoutSearchOrders.aspx">Checkout Orders</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Order Management </a>
+                                    <ul>
+                                        <li id="liAuthorizedOrdersSidetab" runat="server"><a href="AuthorizedOrders.aspx">AuthorizedOrders</a></li>
+                                        <li id="liPickupOrdersSidetab" runat="server"><a href="PickupOrders.aspx">PickUp Orders</a></li>
+                                        <li id="li4" runat="server"><a href="Inpacking.aspx">In Packing Orders</a></li>
+
+                                        <li id="liDispatchedOrdersSidetab" runat="server"><a href="DispatchedOrders.aspx">Dispatched Orders</a></li>
+                                        <li id="liDeliveredOrdersSidetab" runat="server"><a href="DeliveredOrders.aspx">Delivered Orders</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Coupon Management </a>
+                                    <ul>
+                                        <li id="liAddCouponSidetab" runat="server"><a href="AddCoupon.aspx">Add Coupon</a></li>
+                                        <li id="liSearchCouponsSidetab" runat="server"><a href="SearchCoupons.aspx">Search Coupons</a></li>
+                                    </ul>
+                                </li>
+                                <li id="liRefund" runat="server"><a href="Refund.aspx">Refund</a></li>
+                                <li id="liPaymentSatus" runat="server"><a href="paymentStatus.aspx">Payment Status</a></li>
+                                <li id="liNotify" runat="server"><a href="NotifymeProducts.aspx">Notify me Products</a></li>
+                                <li id="liNeedHelp" runat="server"><a href="NeedHelpRequests.aspx">Need Help Requests</a></li>
+                                <li id="liReports" runat="server"><a href="#">Reports</a>
+                                    <ul>
+                                        <li id="liSalesReport" runat="server"><a href="SalesReport.aspx">Sales Report</a></li>
+                                    </ul>
+                                     <ul>
+                                        <li id="li10" runat="server"><a href="FileUload.aspx">FileUpload</a></li>
+                                    </ul> <ul>
+                                        <li id="li11" runat="server"><a href="Medicineupdateupdatenew.aspx">Medicineupdateupdatenew</a></li>
+                                    </ul> <ul>
+                                        <li id="li12" runat="server"><a href="RecordMaster.aspx">RecordMaster</a></li>
+                                    </ul> <ul>
+                                        <li id="li13" runat="server"><a href="ReportMaster.aspx">ReportMaster</a></li>
+                                    </ul>
+                                </li>
+                                <li id="lioffline" runat="server"><a href="#">OfflineSales</a>
+                                    <ul>
+                                        <li><a href="OfflineSales.aspx">Add Offline Sales</a></li>
+                                    </ul>
+                                </li>
+                                <li id="li5" runat="server"><a href="#">Cashback Coupons</a>
+                                    <ul>
+                                        <li id="liAddcashbackcode" runat="server"><a href="Addcashbackcode.aspx">Cashback coupons</a></li>
+                                        <li id="liCouponslist" runat="server"><a href="Couponslist.aspx">Coupons list</a></li>
+
+                                    </ul>
+                                </li>
+                                <li id="liTransaction" runat="server"><a href="TransactionDetails.aspx">Transaction Details</a></li>
+                                <li id="liPaymentGateway" runat="server"><a href="PGStatus.aspx">PaymentGateway Status</a></li>
+                                 <li id="lichangepassword" visible="false" runat="server"><a href="Changepassword.aspx">Change Password<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                                <li id="liPerformance" runat="server"><a href="PerformanceIndicator.aspx">Performance Indicator<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                                <li id="liPrescription" runat="server"><a href="Prescription pending.aspx">Prescription Pending<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                                <li id="liRemitting_Automated" runat="server"><a href="Remitting_Automated.aspx">Remitting Automated<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                                <li id="liRoutinecustomers" runat="server"><a href="Routinecustomers.aspx">Routine Customers<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                                <li id="li1" runat="server"><a href="Prescriptionorders.aspx">Prescription Pending<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                            <li id="li2"><a href="Medicineorderspending.aspx">Medicine Orders Pending<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                            <li id="li3"><a href="Autodispacth.aspx">Upload file to move p-d<!--<span style="background: #08931a; color: #fff; padding: 5px 4px; font-weight: bold; font-size: 9px;margin-left: 5px;">NEW</span>--></a></li>
+                            
+                             <li id="li6" runat="server"><a href="#">Category</a>
+                                    <ul>
+                                        <li id="li7" runat="server"><a href="SuperCategoryInfo.aspx">Super category</a></li>
+                                        <li id="li8" runat="server"><a href="Categoryinfo.aspx">Category</a></li>
+                                        <li id="li9" runat="server"><a href="Subcategoryinfo.aspx">Sub Category</a></li>
+
+                                    </ul>
+                                </li>
+			<li id="li14" runat="server"><a href="AddBox.aspx">Add Box</a></li>
+                                <li id="li15" runat="server"><a href="DeliveryReport.aspx">Delivery Report</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box statics" id="divstatistics" runat="server">
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <h2>Statistics</h2>
+                                </li>
+                                <li>Total Products
+                                    <div class="info black">
+                                        <a href="ProductSearch.aspx">
+                                            <asp:Label ID="lblTotalProducts" runat="server" /></a>
+                                    </div>
+                                </li>
+                                <li>Active Products
+                                    <div class="info green">
+                                        <a href="ProductSearch.aspx?Range=Active">
+                                            <asp:Label ID="lblActiveProducts" runat="server" /></a>
+                                    </div>
+                                </li>
+                                <li>In-Active Products<div class="info red">
+                                    <a href="ProductSearch.aspx?Range=InActive">
+                                        <asp:Label ID="lblInActiveProducts" runat="server" /></a>
+                                </div>
+                                </li>
+                                <li>Out of stock Products
+                                    <div class="info blue">
+                                        <a href="ProductSearch.aspx?Range=Outofstock">
+                                            <asp:Label ID="lblOutofstock" runat="server" /></a>
+                                    </div>
+                                </li>
+                                <li>Top Selling Product
+                                    <div class="info green">
+                                        <a  href="ProductSearch.aspx?Range=TopSelling">
+                                            <asp:Label ID="Lbltopselling" Text="100" runat="server" /></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box togglemenu">
+                        <div class="content">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="right">
+                    <label class="label danger" visible="false" id="errmsgs" runat="server" style="display: block; margin: 45px; text-align: center;"></label>
+                    <div class="section" id="isvisible" runat="server">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</body>
+
+</html>
+

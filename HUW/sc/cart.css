@@ -1,0 +1,703 @@
+.cart-cont-outer {
+    height: 100%;
+    margin: 0 auto;
+   
+    padding: px 0;
+    width: 865px;
+}
+.cart-scroll {
+    background: url("/img/snapdeal/page-overlay.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    margin: 0px auto 0;
+    padding: 0px;
+    width: 925px;
+    border:5px soild #ccc;
+}
+.cart-cont {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CACACA;
+    padding: 9px 9px 0;
+}
+.checkoutAjaxLoader {
+    background: url(".../cart/ajax-loader.gif") no-repeat scroll center center #FFFFFF;
+    height: 400px;
+    left: 210px !important;
+    min-height: 300px !important;
+    width: 820px;
+}
+.ajax-loader-outer {
+    background: url("../cart/ajax-loader.gif") no-repeat scroll 5px 5px #FFFFFF;
+    border: 1px solid #E7E7E7;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #C2C2C2;
+    color: #000000;
+    font-size: 13px;
+    height: 15px;
+    margin: 150px auto 0;
+    padding: 15px 0 12px 46px;
+    width: 68px;
+}
+.mycart-outer {
+    font-weight: bold;
+    overflow: hidden;
+}
+.mycart-outer span.fill-cart {
+    background: url("../cart/fill-lcart-bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 33px;
+    margin: 3px 0 0 4px;
+    padding: 2px 1px 0 20px;
+    text-align: center;
+    width: 20px;
+}
+.mycart-outer span.empty-cart {
+    background: url("/img/snapdeal/empty-lcart-bg.png?v=1") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+}
+.mycart-outer span.cart-text {
+    color: #039BCC;
+    display: block;
+    float: left;
+    font-size: 18px;
+    padding-top: 12px;
+}
+.cart-msj {
+    background: url("/img/snapdeal/cart_error.png") no-repeat scroll 9px 50% #DEDEDE;
+    border: 1px solid #A69F9F;
+    color: #5B5858;
+    font-size: 14px;
+    margin-top: 8px;
+    padding: 9px 9px 9px 50px;
+}
+#cart-message .cart-success {
+    background: url("/img/snapdeal/cart_success.png?v=1") no-repeat scroll 9px 50% #C7EC9E;
+    border: 1px solid #C7EC9E;
+    padding-left: 40px;
+}
+#cart-message .cart-error {
+    background: url("/img/snapdeal/cart_error.png") no-repeat scroll 9px 50% #FDE1DE;
+    border: 1px solid #EEC1BB;
+}
+#cart-message .cart-info {
+    background: url("/img/snapdeal/cart_error.png") no-repeat scroll 9px 50% #DEDEDE;
+    border: 1px solid #A69F9F;
+}
+#cart-message .cart-merge {
+    background: url("/img/snapdeal/cart_error.png") no-repeat scroll 9px 50% #F8F483;
+    padding-left: 50px;
+}
+.cart_success_msj_heading {
+    color: #151515;
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+}
+.cart-item-outer {
+    border: 1px solid #B6B5B5;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+.cart-item-wbor {
+    border-bottom: 0 none !important;
+    border-radius: 10px 10px 0 0 !important;
+   overflow:scroll;
+  height: 230px;
+  
+    overflow-y: auto;
+}
+.cart-item-bg {
+    background: url("../cart/order-summary-bg.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 9px;
+    color: #3E3E3E;
+    margin: 1px;
+}
+.cart-item-heading-bg {
+    background: url("/img/snapdeal/cart-item-bor1.png") repeat-y scroll 91px center rgba(0, 0, 0, 0);
+    font-size: 13px;
+    font-weight: bold;
+    overflow: hidden;
+}
+.cart-items, .cart-description, .cart-price, .cart-quantity, .cart-total, .cart-remove, .cart-total1, .cart-description1 {
+    float: left;
+    padding: 8px;
+}
+.cart-items {
+    width: 77px;
+}
+.cart-description {
+    width: 390px;
+}
+.cart-description1 {
+    width: 340px;
+}
+.cart-price {
+    line-height: 12pt;
+    padding: 8px;
+    width: 70px;
+}
+.cart-quantity {
+    width: 58px;
+}
+.cart-total {
+    padding-left: 0;
+    text-align: center;
+    width: 90px;
+}
+.cart-total1 {
+    padding-left: 0;
+    text-align: right;
+    width: 140px;
+}
+.cart-total1 strong {
+    padding-bottom: 5px;
+}
+.cart-remove {
+    /*padding: 5px 0;*/
+    width: 25px;
+}
+.cart-total strong {
+    display: block;
+    font-weight: bold;
+    text-align: right;
+}
+.cart-price strong {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.cart-item-cont-bg {
+    height: 160px;
+    
+}
+.cart-merge-cont-outer {
+    background: url("/img/snapdeal/cart-merge-bg.gif") no-repeat scroll 354px 35px rgba(0, 0, 0, 0);
+    height: 196px;
+    margin: 5px 0 0;
+   
+    padding-right: 5px;
+}
+.cart-merge-cont-left, .cart-merge-cont-right {
+    float: left;
+    width: 350px;
+}
+.cart-merge-cont-right {
+    float: right;
+}
+.cart-merge-des {
+    width: 148px;
+}
+.cart-merge-price {
+    width: 90px;
+}
+.cart-item-cont {
+    background: url("../cart/cart-item-bor1.png") repeat-y scroll 91px center rgba(0, 0, 0, 0);
+    border-bottom: 1px dotted #252525;
+    font-size: 12px;
+    overflow: hidden;
+}
+.cart-disable {
+    opacity: 0.6;
+}
+.cart-item-cont-merge {
+    background: url("/img/snapdeal/cart-merge-item-bor.png") repeat-y scroll 160px center rgba(0, 0, 0, 0);
+}
+.cart-quantity select.quantity-list {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CBC7C7;
+    box-shadow: 0.9px 1px 3px #E4E4E4 inset;
+    color: #3E3E3E;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 2px;
+    width: 55px;
+}
+.cart-items img.items-image {
+    border: 1px solid #D9D6D6;
+    margin-left: 12px;
+    padding: 1px;
+    width: 48px;
+}
+.empty-shopping-cart {
+    margin-top: 15px;
+}
+.empty-shopping-cart span.heading-cart {
+    background: none repeat scroll 0 0 #016887;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+}
+.empty-shopping-cart span.categories-text {
+    color: #454545;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 0;
+    text-align: center;
+}
+.empty-shopping-cart .start-shoping-button-outer {
+    border-radius: 5px;
+    float: none !important;
+    font-size: 15px !important;
+    height: 32px !important;
+    margin: 15px auto;
+    padding: 0 12px !important;
+}
+.empty-shopping-cart .start-shoping-button-outer span {
+    background: url("/img/snapdeal/buy-button-arrow.png") no-repeat scroll right 8px rgba(0, 0, 0, 0) !important;
+    padding: 4px 19px 8px 0 !important;
+}
+.productCategoriesOuter {
+    font-size: 12px;
+    padding-left: 25px;
+}
+.productCategoriesBox {
+    border-right: 1px dotted #B3B3B3;
+    padding: 10px 15px 2px;
+    width: 164px;
+}
+.productCategoriesOuter div:last-child {
+    border-right: 0 dotted #B3B3B3;
+    padding-right: 0;
+}
+.productCatList a {
+    background: url("/img/snapdeal/emtpy-cart-bullet.png") no-repeat scroll left 7px rgba(0, 0, 0, 0);
+    color: #2E2E2E;
+    display: block;
+    font-size: 13px;
+    padding: 0 0 8px 12px;
+}
+.productCatList a:hover {
+    background: url("/img/snapdeal/emtpy-cart-bullet.png") no-repeat scroll left 7px rgba(0, 0, 0, 0);
+    color: #004B91;
+    display: block;
+    font-size: 13px;
+    padding: 0 0 8px 12px;
+    text-decoration: underline;
+}
+.remove-cart {
+    background: url("/img/snapdeal/remove-cart-inactive.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 17px;
+    margin: 3px auto;
+    width: 16px;
+}
+.remove-cart:hover {
+    background: url("/img/snapdeal/remove-cart-active.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    cursor: pointer;
+}
+.cart-total-outer {
+    background: none repeat scroll 0 0 #E7E5E5;
+    color: #3E3E3E;
+    font-size: 16px;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 5px 20px;
+}
+.cart-total-merge {
+    color: #070707;
+    font-size: 15px;
+    padding: 8px 10px;
+}
+.cart-total-summary {
+    float: left;
+}
+.cart-total-summary .cart-text {
+    color: #010101;
+}
+.cart-total-merge .cart-total-summary .cart-text, .cart-total-payment-text .cart-text {
+    color: #3E3E3E;
+}
+.cart-total-summary .promo-text {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    padding-top: 5px;
+}
+.cart-total-payment-text {
+    float: right;
+    margin-right: 45px;
+    padding-top: 5px;
+}
+.cart-total-payment-text .total-text {
+    color: #010101;
+}
+.cart-payment-outer {
+    background: none repeat scroll 0 0 #F2F1F1;
+    color: #5F5F5F;
+    font-size: 11px;
+    overflow: hidden;
+    padding: 9px 12px;
+}
+.continue-button {
+    background: url("/cart-contnue-button-bg.gif") repeat-x scroll 0 0 #D9387E;
+    border-radius: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    height: 22px;
+    margin-top: 3px;
+    padding: 4px 12px 0;
+}
+.proceed-merge-button {
+    background: url("../cart/checkout/continue_button_bg.gif") repeat-x scroll 0 0 #0773BC;
+    border-radius: 15px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 14px;
+    padding: 3px 12px;
+}
+.proceed-merge-button span {
+    background: url("/img/checkout/continue_button_arrow.png") no-repeat scroll right 1px rgba(0, 0, 0, 0);
+    display: block;
+    padding-right: 22px;
+}
+.continue-button span {
+    background: url("/img/snapdeal/cart-contnue-button-arrow.png?v=2") no-repeat scroll left center rgba(0, 0, 0, 0);
+    display: block;
+    padding-left: 19px;
+}
+.proceed-button {
+    background: -moz-linear-gradient(center top , #D9387E, #D9387E) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    height: 28px;
+    margin-left: 13px;
+    padding: 4px 12px 0;
+    white-space: nowrap;
+    width: 173px;
+}
+.proceed-button span {
+    background: url("/img/checkout/continue_button_arrow.png") no-repeat scroll right 4px rgba(0, 0, 0, 0);
+    display: block;
+    padding-right: 19px;
+}
+.proceed-button span a {
+    color: #FFFFFF;
+}
+.cart-button-merge-sepr {
+    background: url("/img/snapdeal/cart-merge-button-sep.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 11px;
+    height: 33px;
+    margin: 0 7px;
+    padding: 17px 0 0 4px;
+    width: 20px;
+}
+.payment-secure-text {
+    background: url("/img/snapdeal/cart-secure-ico.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    clear: both;
+    float: left;
+    margin-right: 4px;
+    margin-top: 12px;
+    padding: 8px 0 4px 21px;
+}
+.cart-payment-outer .payment-button-outer {
+    float: right;
+    overflow: hidden;
+}
+.proceed-button-merge-outer {
+    overflow: hidden;
+}
+.payment-options {
+    background: url("/img/snapdeal/cart-options-icon_v1.gif?v=2") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: left;
+    margin-top: 13px;
+    padding: 7px 448px 5px 0;
+}
+.network-login-head, .assured {
+    color: #686868;
+    font-size: 12px;
+}
+.assured {
+    background: url("/img/snapdeal/sign-assured.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-left: 10px;
+    padding-left: 15px;
+}
+
+.cart-skip, .share-close, .seller-skip {
+    background: url("../cart/close.png?v=1") no-repeat scroll right top rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-size: 11px;
+    height: 20px;
+    margin: -4px 0 0 -21px;
+    padding-right: 25px;
+    padding-top: 3px;
+    text-align: right;
+    width: 100%;
+}
+.cart-cont-outer {
+    height: 100%;
+    margin: 0 auto;
+   
+    padding: 15px 0;
+    width: 865px;
+   
+}
+.FrShip, .add-cart-ship {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #D1D1D1;
+    border-image: none;
+    border-radius: 5px 0 0 5px;
+    border-style: solid;
+    border-width: 2px 0 2px 2px;
+    color: #363636;
+    cursor: pointer;
+    float: left;
+    font: 11px Segoe UI;
+    height: 36px;
+    padding: 5px;
+    text-align: center;
+    width: 230px;
+}
+
+
+div.clickshelf-wrapper {
+    background: url("../images.RELEASE_DATE/clickshelf-bkg.png") no-repeat scroll 37px 25px rgba(0, 0, 0, 0);
+    height: 255px;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    overflow: hidden;
+    position: relative;
+}
+div.clickshelf-wrapper span.clickshelf-updown {
+    background: url("../images.RELEASE_DATE/btn-slider-controls.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 162px;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 75px;
+    z-index: 10;
+}
+div.clickshelf-wrapper span.clickshelf-updown p {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+div.clickshelf-wrapper span.clickshelf-updown p a {
+    background: url("../images.RELEASE_DATE/btn-indicators.png") no-repeat scroll -16px 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -1000px;
+    width: 18px;
+}
+div.clickshelf-wrapper span.clickshelf-updown p a.current {
+    background-position: -35px 1px;
+}
+div.clickshelf-wrapper span.clickshelf-updown p a:hover {
+    background-position: 2px 1px;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.control {
+    background: url("../images.RELEASE_DATE/btn-slider-controls.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-indent: -1000px;
+    width: 75px;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.up.disabled, div.clickshelf-wrapper span.clickshelf-updown a.up.disabled:hover, div.clickshelf-wrapper span.clickshelf-updown a.up.disabled:active {
+    background-position: -228px 0;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.down.disabled, div.clickshelf-wrapper span.clickshelf-updown a.down.disabled:hover, div.clickshelf-wrapper span.clickshelf-updown a.down.disabled:active {
+    background-attachment: scroll;
+    background-position: -228px -70px;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.up {
+    background-position: 0 0;
+    height: 69px;
+    top: 0;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.down {
+    background-position: 0 -70px;
+    height: 68px;
+    top: 70px;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.up:hover {
+    background-position: -76px 0;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.down:hover {
+    background-position: -76px -70px;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.up:active {
+    background-position: -152px 0;
+}
+div.clickshelf-wrapper span.clickshelf-updown a.down:active {
+    background-position: -152px -70px;
+}
+div.clickshelf-wrapper ul.product-grid.clickshelf {
+    position: relative;
+    width: 90%;
+}
+ul.product-grid li .product-image {
+    height: 140px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+}
+ul.product-grid li .product-image .product-info {
+    background: none repeat scroll 0 0 #FFFFFF;
+    left: 0;
+    top: 0;
+}
+ul.product-grid li .product-image .product-info .hover-info {
+    bottom: 11px;
+    display: none;
+    position: absolute;
+}
+ul.product-grid li .product-image img {
+    left: 0;
+    top: 0;
+}
+ul.product-grid li:hover .product-image .product-info .hover-info, ul.product-grid li.show-info .product-image .product-info .hover-info, ul.product-grid li.input-focused .product-image .product-info .hover-info {
+    display: block;
+}
+div.input-clicker div {
+    background: url("../cart/bg-btn-quanity.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+}
+div.hover-info div.input-clicker {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    left: 5px;
+    top: 0;
+}
+div.input-clicker div {
+    display: block;
+    height: 44px;
+    width: 70px;
+}
+div.input-clicker a.up, div.input-clicker a.down {
+    background: url("../cart/bg-btn-quanity.png") no-repeat scroll -34px 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 23px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-indent: -1000px;
+    width: 31px;
+}
+div.input-clicker a.down {
+    background-position: right -23px;
+    bottom: 0;
+    height: 21px;
+}
+div.input-clicker a.down:hover {
+    background-position: right -113px;
+}
+div.input-clicker a.down:active {
+    background-position: right -68px;
+}
+div.input-clicker a.up:hover {
+    background-position: right -90px;
+}
+div.input-clicker a.up:active {
+    background-position: right -45px;
+}
+div.input-clicker {
+    display: block;
+    height: 44px;
+    position: relative;
+    width: 65px;
+}
+
+div.input-clicker input {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    border-radius: 0;
+    color: #544843;
+    font: bold 14px Arial,Helvetica,sans-serif;
+    height: 36px;
+    left: 3px;
+    padding: 10px 0;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    width: 31px;
+}
+
+.no-stock {
+    background: none repeat scroll 0 0 #D9387E;
+    color: #FFFFFF;
+  
+    font-weight: bold;
+    opacity: 0.011
+    padding: 4px;
+    position: absolute;
+    text-align: center;
+}
+
+
+
+/*********************************************************************
+* This script has been released with the aim that it will be useful.
+* Written by Vasplus Programming Blog
+* Website: www.vasplus.info
+* Email: info@vasplus.info
+* All Copy Rights Reserved by Vasplus Programming Blog
+***********************************************************************/
+
+
+
+/*General Pop-up Background*/
+#vpb_pop_up_background
+{
+	display:none;
+	_position:absolute; /* hack for internet explorer 6*/
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background:#000000;
+	border:1px solid #cecece;
+	position:fixed;
+	z-index:99999999;
+}
+#vpb_pop_up_backgroundcomment {
+    display: none;
+    _position: absolute; /* hack for internet explorer 6*/
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #000000;
+    border: 1px solid #cecece;
+    position: fixed;
+    z-index: 99999999;
+}
+
+
+
+
+
+/*Textarea Boxes and Input Boxes Style*/
+.vpb_textAreaBoxInputs {min-width:260px; width:auto;height:20px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:7px; padding-left:10px; padding-right:10px;border: 1px solid #6CF;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.vpb_textAreaBoxInputs:focus {outline:none;border: 1px solid #6CF;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;}
+
+
+
+/*Vasplus Button*/
+
