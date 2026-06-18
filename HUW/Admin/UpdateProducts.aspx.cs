@@ -801,7 +801,7 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
             }
             var product = new Product();
             // product.ProductImgs = ProductImage.PostedFile;
-            product.SizeGuidePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles/Size_Chart/" + FileUpload2.PostedFile.FileName;
+            product.SizeGuidePath = ConfigurationManager.AppSettings["SizeGuidePath"] + FileUpload2.PostedFile.FileName;
 
             if (prodct.ProductId != 0)
             {
@@ -939,7 +939,7 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
             }
             var product = new Product();
             product.ProductImgs = ProductImage.PostedFile;
-            product.SizeGuidePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles/Size_Chart/" + FileUpload2.PostedFile.FileName;
+            product.SizeGuidePath = ConfigurationManager.AppSettings["SizeGuidePath"] + FileUpload2.PostedFile.FileName;
 
             if (prodct.ProductId != 0)
             {
@@ -971,7 +971,7 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
 
     public void UploadGallery(string ProductId)
     {
-        var galleryPath1 = @"C:\inetpub\wwwroot\HUW_live\UploadFiles\Gallery\";
+        string galleryPath1 = ConfigurationManager.AppSettings["GalleryPath"];
         if (FileUpload1.HasFile)
         {
             //SqlDataSource1.Insert();
@@ -1042,8 +1042,7 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
 
                                 using (FileStream streamWriter = File.Create(strNewFile))
                                 {
-                                    //pathList.Add(Path.Combine(@"C:\inetpub\wwwroot\UploadFiles\Gallery\" + ProductId + @"/", theEntry.Name));
-                                    pathList.Add(Path.Combine(@"C:\inetpub\wwwroot\HUW_live\UploadFiles\HUW_live\Gallery\" + ProductId + @"/", theEntry.Name));
+                                    pathList.Add(Path.Combine(ConfigurationManager.AppSettings["UploadFilesGalleryPath"] + ProductId + @"/", theEntry.Name));
                                     int size = 2048;
                                     byte[] data = new byte[2048];
                                     while (true)
@@ -1097,8 +1096,8 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
             //Live Code
             //File.Delete(Server.MapPath(data1.ProductImgUrl));
             //Test Code
-            File.Delete(@"C:\inetpub\wwwroot\\HUW_live\UploadFiles\" + data1.ProductImgUrl.Split('/')[4]);
-            File.Delete(@"C:\inetpub\wwwroot\HUW_live\UploadFiles\" + data1.ProductImgUrl2.Split('/')[4]);
+            File.Delete(ConfigurationManager.AppSettings["UploadFilesPath"] + data1.ProductImgUrl.Split('/')[4]);
+            File.Delete(ConfigurationManager.AppSettings["UploadFilesPath"] + data1.ProductImgUrl2.Split('/')[4]);
         }
     }
     protected void chkDeleteFolderPhtosandUpload_CheckedChanged(object sender, EventArgs e)
@@ -1107,7 +1106,7 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
         {
             int productId = Convert.ToInt32(Request.QueryString["ID"]);
             BalUtility.DeleteProdcutgallery(productId);
-            File.Delete(Path.Combine(@"C:\inetpub\wwwroot\UploadFiles\Gallery\", productId.ToString()));
+            File.Delete(Path.Combine(ConfigurationManager.AppSettings["GalleryPath"], productId.ToString()));
         }
     }
 
@@ -1146,29 +1145,12 @@ public partial class Admin_UpdateProducts : System.Web.UI.Page
                 File.Delete(fullpath);
             }
             FileUpload2.SaveAs(fullpath);
-            //ArrayList zippedList = UnZipFile(ProductId, fullpath);  //method for Extracted the Zip File.
-
-            //string[] array1 = Directory.GetFiles(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Gallery/Size_Chart/"));
-            //string[] array2 = Directory.GetFiles(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/large/"));
-
-
-            //List<ProductsGallery> gallery = new List<ProductsGallery>();
-            //for (int i = 0; i < array1.Length; i++)
-            //{
-            //    gallery.Add(new ProductsGallery
-            //    {
-            //        ProductId = Convert.ToInt64(ProductId),
-            //        ImgUrl = "https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/small/" + Path.GetFileName(array1[i]),
-            //        LargeImgUrl = "https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/large/" + Path.GetFileName(array2[i]),
-            //    });
-            //}
-
+          
             var repository = new ProductRepository();
             var currentProd = repository.Single(p => p.ProductId == ProductId);
             currentProd.SizeGuidePath = fullpath;
             repository.Update(currentProd);
 
-            //   File.Delete(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Size_Chart/") + filename);
         }
     }
     private void Getaccess()

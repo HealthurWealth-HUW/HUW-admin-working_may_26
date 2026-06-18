@@ -1,13 +1,15 @@
-﻿using System;
+﻿using BAL;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Text;
-using System.Web;
+using System.Configuration;
+using System.IO;
 //using log4net;
 using System.Net;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
-using System.IO;
+using System.Web;
 
 namespace Utility
 {
@@ -404,14 +406,14 @@ namespace Utility
             //        break;
             //}
 
-            var filePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles\";
+            var filePath = ConfigurationManager.AppSettings["UploadFilesPath"];
             switch (imgType)
             {
                 case ProductImageTypes.ProductImg:
-                    filePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles\";
+                    filePath = ConfigurationManager.AppSettings["UploadFilesPath"];
                     break;
                 case ProductImageTypes.GalleryImg:
-                    filePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles\";
+                    filePath = ConfigurationManager.AppSettings["UploadFilesPath"];
                     break;
             }
             //return filePath + String.Format("{0:d9}", (DateTime.Now.Ticks / 10) % 1000000000);
@@ -727,7 +729,14 @@ namespace Utility
             }
             catch (Exception ex)
             {
-                //// Shared.Log.Error(ex);
+                DbLogger.LogError(
+                    ex,
+                    "UploadFile.Upload",
+                    "FileName: " + file?.FileName +
+                    ", ContentLength: " + file?.ContentLength +
+                    ", ImageType: " + imgType.ToString()
+                );
+
                 throw;
             }
         }

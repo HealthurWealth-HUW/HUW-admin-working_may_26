@@ -12469,7 +12469,7 @@ Brand:   <a>" + item.Product.Brand + @"</a>
     {
         try
         {
-            string url = "https://netconnect.bluedat.com/Ver1.10/ShippingAPI/WayBill/WayBillGeneration.svc/rest/ImportData";
+            string url = "https://netconnect.bluedart.com/Ver1.11/ShippingAPI/WayBill/WayBillGeneration.svc/rest/ImportData";
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             ServicePointManager.Expect100Continue = true;
@@ -12614,11 +12614,13 @@ Brand:   <a>" + item.Product.Brand + @"</a>
                     bluereq.Profile.Customercode = "301221";
                     bluereq.Profile.LicenceKey = "4ulrirrhjpgjlutsumugwhifsisuqpip";
                     bluereq.Profile.LoginID = "HYD99570";
-                    bluereq.Profile.Version = "1.10";
+                    //bluereq.Profile.Version = "1.10";
 
                 }
                 var body = JsonConvert.SerializeObject(bluereq);
                 request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("JWTToken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjpcL1wvYXBpZ2VlLWVkZ2UtSldULXBvbGljeS10ZXN0IiwiZXhwIjoxNzM4NTIzOTg0LCJpYXQiOjE3Mzg0Mzc1ODQsImp0aSI6IjgwOTQ4ZDJiLWZiYWItNDcyNC1hOWY5LTUyNGE0ZjgwMzlkMCJ9.XY6Sxo8wjlzMcfuMEJggKN0NMnd3pQGmTfWrZt4WIUY");
+
                 request.AddHeader("Cookie", "BIGipServerpl_netconnect-bluedart.dhl.com_443=!JA4PsphH5lKLEuXzvvsIVYa1K6PKfTwl/RvkARVxiMifZsSOx2eOEA9sYkji+nghy0c7cO3eXFaB8po=; BIGipServerpl_netconnect-bluedart.dhl.com_9446=!ZGtr+RxX3/EfU3DzvvsIVYa1K6PKfeYUBMXkyzTHIXdp/RrAEHuxHna2e+P2zpK4xqDLA9rz2K0KcAw=; TS01808994=01914b743d7cb25a2e095570db6893ca5e6e82550f8d20ec2da40938a5538468f93191561df9f87d486daa75a612514d2053c2cd0ebdc3dd8422985f3b21c027e62dc808e90190b9be4cec59437954971da6433da3");
                 request.AddParameter("application/json", body, ParameterType.RequestBody);
 
@@ -12634,9 +12636,6 @@ Brand:   <a>" + item.Product.Brand + @"</a>
 
                     if (item.IsError == false)
                     {
-                        //string path = "/UploadFiles/AWB/Buedartfile" + DateTime.Now.ToString("ddmmmyyyyss") + "";
-                        //string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~" + path + ".pdf");
-                        //File.WriteAllBytes(savePath, item.AWBPrintContent);
                         string res = DownlaodBluedartPdf(transid.ToString(), item.AWBNo, item.DestinationArea, item.DestinationLocation);
                         finalpath += res + "*";
 
@@ -12663,6 +12662,12 @@ Brand:   <a>" + item.Product.Brand + @"</a>
         }
         catch (Exception ex)
         {
+            DbLogger.LogError(
+        ex,
+        null,
+        "DownloadBluedartExcel"
+    );
+
             return new CustomResponse
             {
                 Status = Shared.ResponseStatus.Fail.ToString(),
@@ -12786,8 +12791,8 @@ Brand:   <a>" + item.Product.Brand + @"</a>
                                         singlereq.destination_details.pincode = row["Pincode"].ToString();
                                         singlereq.destination_details.city = row["City"].ToString();
                                         singlereq.destination_details.state = row["State"].ToString();
-singlereq.pieces_detail = new[]
-{
+                                        singlereq.pieces_detail = new[]
+                                        {
     new PieceDetail
     {
         description = "Medicine",
@@ -12812,11 +12817,10 @@ singlereq.pieces_detail = new[]
                 DTDCObject dTDCObject = new DTDCObject();
                 dTDCObject.consignments = requests;
                 var body = JsonConvert.SerializeObject(dTDCObject);
- //string filePath = "C:/inetpub/wwwroot/AdminStaging/UploadFiles/output.txt";
-string path = "/UploadFiles/AWB/output";
-                        string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~" + path + ".txt");
-        // Write JSON to the file
-        File.WriteAllText(savePath, body);
+                string path = "/UploadFiles/AWB/output";
+                string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~" + path + ".txt");
+                // Write JSON to the file
+                File.WriteAllText(savePath, body);
                 request.AddParameter("application/json", body, ParameterType.RequestBody);
                 request.AddHeader("api-key", "fc3ca818b3b4f5be6dce68f2b003bf");
                 IRestResponse response = client.Execute(request);
@@ -12833,9 +12837,6 @@ string path = "/UploadFiles/AWB/output";
 
                     if (item.success == true)
                     {
-                        //string path = "/UploadFiles/AWB/Buedartfile" + DateTime.Now.ToString("ddmmmyyyyss") + "";
-                        //string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~" + path + ".pdf");
-                        //File.WriteAllBytes(savePath, item.AWBPrintContent);
                         string res = DownlaodDTDCPdf(item.reference_number);
                         finalpath += res + "*";
 
@@ -13164,8 +13165,7 @@ string path = "/UploadFiles/AWB/output";
             string htmlpgePath = Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched);
             string subject = Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched);
             PaymentTransaction PymntPrdctDispatcheddata = updatedata;
-            //BalUtility.SendMailForProductStatus(updatedata, Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched), Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched));
-
+            BalUtility.SendMailForProductStatus(updatedata, Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched), Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched));
             repository.Update(updatedata);
             return new CustomResponse
             {
@@ -13184,6 +13184,19 @@ string path = "/UploadFiles/AWB/output";
 
         }
     }
+    //private void SendDispatchMailIfRequired(PaymentTransaction transaction)
+    //{
+    //    if (transaction != null &&
+    //        transaction.Dispatched &&
+    //        transaction.OrderCurrentStatus == (int)Shared.OrderStatus.Dispatched)
+    //    {
+    //        BalUtility.SendMailForProductStatus(
+    //            transaction,
+    //            Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched),
+    //            Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched)
+    //        );
+    //    }
+    //}
 
     public CustomResponse UpdateWaitingForPickOrderOther(long OrderID, string shipmentID, string PickUPID)
     {
@@ -13204,7 +13217,12 @@ string path = "/UploadFiles/AWB/output";
             string subject = Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched);
             PaymentTransaction PymntPrdctDispatcheddata = updatedata;
             repository.Update(updatedata);
-            //BalUtility.SendMailForProductStatus(updatedata, Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched), Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched));
+            BalUtility.SendMailForProductStatus(
+                updatedata,
+                Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched),
+                Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched)
+
+            );
 
             return new CustomResponse
             {
@@ -13229,22 +13247,16 @@ string path = "/UploadFiles/AWB/output";
     {
         try
         {
-            using (db_Zon_HuwEntities Context = new db_Zon_HuwEntities())
+            if (Brand == "Select")
+                Brand = null;
+            var repository = new ProductRepository();
+            var datas = repository.GetProducts(rows, ProductId, ProductName, SuperCategory, Category, SubCategory, ProductStatus, Brand, Quantity);
+
+            return new CustomResponse
             {
-                bool PrdctStats = true;
-                var repository = new ProductRepository();
-                if (Brand == "Select")
-                    Brand = null;
-                long ProductID = ProductId;
-
-                var datas = repository.GetProducts(rows, ProductId, ProductName, SuperCategory, Category, SubCategory, ProductStatus, Brand, Quantity);
-
-                return new CustomResponse
-                {
-                    Status = Shared.ResponseStatus.Success.ToString(),
-                    Result = datas
-                };
-            }
+                Status = Shared.ResponseStatus.Success.ToString(),
+                Result = datas
+            };
         }
 
         catch (Exception ex)
@@ -13361,8 +13373,7 @@ string path = "/UploadFiles/AWB/output";
             string htmlpgePath = Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched);
             string subject = Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched);
             PaymentTransaction PymntPrdctDispatcheddata = updatedata;
-            //BalUtility.SendMailForProductStatus(updatedata, Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched), Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched));
-
+            BalUtility.SendMailForProductStatus(updatedata, Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched), Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched));
             repository.Update(updatedata);
             return new CustomResponse
             {
@@ -19345,15 +19356,23 @@ Searched TransactionId has not found
         if (!string.IsNullOrEmpty(PaymentTransactionId.ToString()) || OrderStatus != "Null" || CreatedOn != CreatedDate)
         {
             data = (from p in Context.CheckOutPaymentTransactions
-                    where ((PaymentTransactionId == 0 || PaymentTransactionId == null) ? true : (p.PaymentTransactionId == PaymentTransactionId))
-                     && (OrderStatus == "Null" ? true : (p.OrderStatus == OrderStatus))
+                    where p.OrderStatus != "Stale"
+                    && ((PaymentTransactionId == 0 || PaymentTransactionId == null) ? true : (p.PaymentTransactionId == PaymentTransactionId))
+                    && (OrderStatus == "Null" ? true : (p.OrderStatus == OrderStatus))
                     && (CreatedOn == CreatedDate ? true : (p.CreatedOn >= CreatedOn && p.CreatedOn <= UpdatedOn))
-                    select p).OrderByDescending(x => x.PaymentTransactionId).Take(rows.Value).ToList();
+                    select p)
+                    .OrderByDescending(x => x.PaymentTransactionId)
+                    .Take(rows.Value)
+                    .ToList();
         }
         else
         {
             data = (from p in Context.CheckOutPaymentTransactions
-                    select p).OrderByDescending(x => x.PaymentTransactionId).Take(rows.Value).ToList();
+                    where p.OrderStatus != "Stale"
+                    select p)
+                   .OrderByDescending(x => x.PaymentTransactionId)
+                   .Take(rows.Value)
+                   .ToList();
         }
 
         StringBuilder strtd = new StringBuilder();
@@ -21158,26 +21177,23 @@ Searched TransactionId has not found
         request.AddHeader("api-key", "fc3ca818b3b4f5be6dce68f2b003bf");
         IRestResponse response = client.Execute(request);
         //var shippingLabelResponse = JsonConvert.DeserializeObject<ShippingLabelResponse>(response.Content);
-//string path = "/UploadFiles/AWB/output";
-                        //string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~" + path + ".txt");
-        // Write JSON to the file
-        //File.WriteAllText(savePath, shippingLabelResponse.ToString());
-if (response.RawBytes != null)
-{
-    // Define the path where the PDF should be saved
-    string path = "/UploadFiles/AWB/" + DateTime.Now.ToString("ddmmmyyyyssffff") + "";
-    string savePath = System.Web.HttpContext.Current.Server.MapPath("~" + path + ".pdf");
 
-    // Save the raw bytes directly to a PDF file
-    File.WriteAllBytes(savePath, response.RawBytes);
-    return  "http://admin.healthurwealth.com" + path + ".pdf";
-}
-else
-{
-    return "Failed to retrieve PDF content.";
-}
+        if (response.RawBytes != null)
+        {
+            // Define the path where the PDF should be saved
+            string path = "/UploadFiles/AWB/" + DateTime.Now.ToString("ddmmmyyyyssffff") + "";
+            string savePath = System.Web.HttpContext.Current.Server.MapPath("~" + path + ".pdf");
+
+            // Save the raw bytes directly to a PDF file
+            File.WriteAllBytes(savePath, response.RawBytes);
+            return "http://admin.healthurwealth.com" + path + ".pdf";
+        }
+        else
+        {
+            return "Failed to retrieve PDF content.";
+        }
         return response.Content;
-        
+
     }
     [HttpGet]
     public CustomResponse UpdateReturnStatus(long ID)

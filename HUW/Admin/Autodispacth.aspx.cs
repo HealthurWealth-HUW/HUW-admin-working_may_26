@@ -29,8 +29,7 @@ public partial class Admin_Autodispacth : System.Web.UI.Page
                 string folderPath = Server.MapPath("~/UploadFiles/AWB/");
                 string path = folderPath + Guid.NewGuid() + Path.GetFileName(fileAWB.FileName);
                 fileAWB.SaveAs(path);
-                //string path = string.Concat(Server.MapPath("~/UploadFiles/AWB/" + Guid.NewGuid() + fileAWB.FileName));
-                //fileAWB.SaveAs(path);
+               
                 // Connection String to Excel Workbook  
                 string excelCS = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path);
                 string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", path);
@@ -65,6 +64,11 @@ public partial class Admin_Autodispacth : System.Web.UI.Page
                         pt.DispatchedDate = DateTime.Now;
                         pt.OrderCurrentStatus = (int)Shared.OrderStatus.Dispatched;
                         context.SaveChanges();
+                        BalUtility.SendMailForProductStatus(
+                        pt,
+                        Shared.GethtmlPage(Shared.ProductStatusForSendMail.Dispatched),
+                        Shared.GetPrdctStatusSubject(Shared.ProductStatusForSendMail.Dispatched)
+                        );
                         var Repsitory2 = new UserRepository();
                         var UsrDtls = Repsitory2.First(u => u.UserId == pt.UserId);
                         string Message = "";

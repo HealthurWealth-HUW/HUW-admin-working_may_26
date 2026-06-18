@@ -560,6 +560,9 @@ warning 6002: The table/view 'db_Zon_Huw_Live.dbo.PincodeInfo' does not have a p
           <Property Name="GST" Type="decimal" Precision="8" Scale="0" />
           <Property Name="BatchNo" Type="nvarchar" MaxLength="50" />
           <Property Name="HSNCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CdnProductImgUrl" Type="varchar" MaxLength="500"  />
+          <Property Name="CdnProductImgUrl2" Type="varchar" MaxLength="500" />
+
         </EntityType>
         <EntityType Name="ProductsGallery">
           <Key>
@@ -2503,6 +2506,9 @@ FROM [dbo].[Temp_File_Data] AS [Temp_File_Data]</DefiningQuery>
           <NavigationProperty Name="UserProductTransactions" Relationship="Self.FK_UserProductTransactions_Products" FromRole="Products" ToRole="UserProductTransactions" />
           <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HSNCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CdnProductImgUrl" Type="String" MaxLength="500"  />
+          <Property Name="CdnProductImgUrl2" Type="String" MaxLength="500" />
+
         </EntityType>
         <EntityType Name="ProductsGallery">
           <Key>
@@ -4457,6 +4463,9 @@ FROM [dbo].[Temp_File_Data] AS [Temp_File_Data]</DefiningQuery>
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="H2Tag" ColumnName="H2Tag" />
                 <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="CdnProductImgUrl" ColumnName="CdnProductImgUrl"  />
+                <ScalarProperty Name="CdnProductImgUrl2" ColumnName="CdnProductImgUrl2" />
+
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

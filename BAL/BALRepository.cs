@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System;
-using System.Text;
+﻿using BAL;
 using DAL;
-using System.Web;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Web;
+using Utilities;
 using Utility;
-using BAL;
 //using Dapper;
 
 namespace BAL
@@ -612,36 +614,62 @@ namespace BAL
                 return data.ToList();
             }
         }
-
-
         public void Save(Product product)
         {
             try
             {
-                //Live Code
-                //product.ProductImgUrl = product.ProductImgs.Upload(Shared.ProductImageTypes.ProductImg);
-                //Test Code
-                string ImgPath = product.ProductImgs.Upload(Shared.ProductImageTypes.ProductImg);
-                string[] Img = ImgPath.Split('\\');
-                product.ProductImgUrl = "https://www.healthurwealth.com/UploadFiles/" + Img[5];
-                string ImgPaths = product.ProductImgss.Upload(Shared.ProductImageTypes.ProductImg);
-                string[] Imgs = ImgPaths.Split('\\');
-                product.ProductImgUrl2 = "https://www.healthurwealth.com/UploadFiles/" + Imgs[5];
+                System.Net.ServicePointManager.SecurityProtocol =
+                    System.Net.SecurityProtocolType.Tls12 |
+                    System.Net.SecurityProtocolType.Tls11;
+
+                product.CdnProductImgUrl =
+                    BunnyCdnUploader
+                        .UploadAsync(product.ProductImgs, "")
+                        .GetAwaiter()
+                        .GetResult();
+
+                product.CdnProductImgUrl2 =
+                    BunnyCdnUploader
+                        .UploadAsync(product.ProductImgss, "")
+                        .GetAwaiter()
+                        .GetResult();
+
+                string imgPath =
+                    product.ProductImgs.Upload(
+                        Shared.ProductImageTypes.ProductImg
+                    );
+
+                string[] img = imgPath.Split('\\');
+
+                product.ProductImgUrl =
+                    "https://www.healthurwealth.com/UploadFiles/" +
+                    img[5];
+
+                string imgPaths =
+                    product.ProductImgss.Upload(
+                        Shared.ProductImageTypes.ProductImg
+                    );
+
+                string[] imgs = imgPaths.Split('\\');
+
+                product.ProductImgUrl2 =
+                    "https://www.healthurwealth.com/UploadFiles/" +
+                    imgs[5];
 
                 Insert(product);
             }
-            catch (System.Data.SqlTypes.SqlTypeException sdex)
-            {
-                throw sdex;
-            }
-
-
             catch (Exception ex)
             {
-                // // Shared.Log.Error(ex);
+                DbLogger.LogError(
+                    ex,
+                    product,
+                    "ProductRepository.Save"
+                );
+
                 throw;
             }
         }
+       
         public void UpdateAdditionalinfo(Tbl_AdditionalInfo info)
         {
             using (db_Zon_HuwEntities Context = new db_Zon_HuwEntities())
@@ -948,8 +976,6 @@ namespace BAL
         {
             using (db_Zon_HuwEntities Context = new db_Zon_HuwEntities())
             {
-                List<Product> data = new List<Product>();
-
                 bool status = true;
                 if (ProductStatus == "1")
                 {
@@ -963,75 +989,48 @@ namespace BAL
                 {
                     status = false;
                 }
+
+                // Build the query once — filters applied in SQL, not in memory
+                var query = from p in Context.Products
+                            join subc in Context.SubCategories on p.SubCategoryId equals subc.SubCategoryId
+                            join c in Context.Categories on subc.CategoryId equals c.CategoryId
+                            join sup in Context.SuperCategories on c.SuperCategoryId equals sup.SuperCategoryId
+                            where (ProductId == 0 || p.ProductId == ProductId)
+                            && (ProductName == null || p.ProductName.Contains(ProductName))
+                            && (SuperCategory == 0 || sup.SuperCategoryId == SuperCategory)
+                            && (Category == 0 || c.CategoryId == Category)
+                            && (SubCategory == 0 || subc.SubCategoryId == SubCategory)
+                            && (Brand == null || p.Brand == Brand)
+                            && (Quantity == 0 || (Quantity == 1 ? p.Quantity <= 0 : (Quantity == 2 ? (p.Quantity >= 1 && p.Quantity < 5) : (p.Quantity >= 5))))
+                            && (ProductStatus == null || p.IsDeleted == status)
+                            select new
+                            {
+                                ProductId = p.ProductId,
+                                IsActive = p.IsActive,
+                                IsDeleted = p.IsDeleted,
+                                IsSold = p.IsSold,
+                                ProductCost = p.ProductCost,
+                                ProductDiscountPercentage = p.ProductDiscountPercentage,
+                                ProductOriginalCost = p.ProductOriginalCost,
+                                ProductImgUrl = p.ProductImgUrl,
+                                ProductName = p.ProductName,
+                                Quantity = p.Quantity,
+                                UpdatedOn = p.UpdatedOn,
+                                Brand = p.Brand,
+                                CreatedOn = p.CreatedOn,
+                                SubCategoryName = subc.SubCategoryName,
+                                SoldQty = p.UserProductTransactions.Count()
+                            };
+
                 if (ProductStatus == "2")
                 {
-                    var datas = (from p in Context.Products
-                                 join subc in Context.SubCategories on p.SubCategoryId equals subc.SubCategoryId
-                                 join c in Context.Categories on subc.CategoryId equals c.CategoryId
-                                 join sup in Context.SuperCategories on c.SuperCategoryId equals sup.SuperCategoryId
-                                 where (ProductId == 0 ? true : (p.ProductId == ProductId))
-                                 && (ProductName == null ? true : (p.ProductName.Contains(ProductName)))
-                                 && (SuperCategory == 0 ? true : (sup.SuperCategoryId == SuperCategory))
-                                 && (Category == 0 ? true : (c.CategoryId == Category))
-                                 && (SubCategory == 0 ? true : (subc.SubCategoryId == SubCategory))
-                                 && (Brand == null ? true : (p.Brand == Brand))
-                                 && (Quantity == 0 ? true : ((Quantity == 1 ? p.Quantity <= 0 : (Quantity == 2 ? (p.Quantity >= 1 && p.Quantity < 5) : (p.Quantity >= 5)))))
-                                 && (ProductStatus == null ? true : (p.IsDeleted == status))
-                                 select new
-                                 {
-                                     ProductId = p.ProductId,
-                                     IsActive = p.IsActive,
-                                     IsDeleted = p.IsDeleted,
-                                     IsSold = p.IsSold,
-                                     ProductCost = p.ProductCost,
-                                     ProductDiscountPercentage = p.ProductDiscountPercentage,
-                                     ProductOriginalCost = p.ProductOriginalCost,
-                                     ProductImgUrl = p.ProductImgUrl,
-                                     ProductName = p.ProductName,
-                                     Quantity = p.Quantity,
-                                     UpdatedOn = p.UpdatedOn,
-                                     Brand = p.Brand,
-                                     CreatedOn = p.CreatedOn,
-                                     SubCategoryName = p.SubCategory.SubCategoryName,
-                                     SoldQty = p.UserProductTransactions.Where(x => x.ProductId == p.ProductId).Count()
-                                 }).OrderByDescending(x => x.SoldQty).ToList().Take(100);
-
-                    return datas;
+                    // Take before ToList so SQL applies TOP 100, not in-memory
+                    return query.OrderByDescending(x => x.SoldQty).Take(100).ToList();
                 }
                 else
                 {
-                    var datas = (from p in Context.Products
-                                 join subc in Context.SubCategories on p.SubCategoryId equals subc.SubCategoryId
-                                 join c in Context.Categories on subc.CategoryId equals c.CategoryId
-                                 join sup in Context.SuperCategories on c.SuperCategoryId equals sup.SuperCategoryId
-                                 where (ProductId == 0 ? true : (p.ProductId == ProductId))
-                                 && (ProductName == null ? true : (p.ProductName.Contains(ProductName)))
-                                 && (SuperCategory == 0 ? true : (sup.SuperCategoryId == SuperCategory))
-                                 && (Category == 0 ? true : (c.CategoryId == Category))
-                                 && (SubCategory == 0 ? true : (subc.SubCategoryId == SubCategory))
-                                 && (Brand == null ? true : (p.Brand == Brand))
-                                 && (Quantity == 0 ? true : ((Quantity == 1 ? p.Quantity <= 0 : (Quantity == 2 ? (p.Quantity >= 1 && p.Quantity < 5) : (p.Quantity >= 5)))))
-                                 && (ProductStatus == null ? true : (p.IsDeleted == status))
-                                 select new
-                                 {
-                                     ProductId = p.ProductId,
-                                     IsActive = p.IsActive,
-                                     IsDeleted = p.IsDeleted,
-                                     IsSold = p.IsSold,
-                                     ProductCost = p.ProductCost,
-                                     ProductDiscountPercentage = p.ProductDiscountPercentage,
-                                     ProductOriginalCost = p.ProductOriginalCost,
-                                     ProductImgUrl = p.ProductImgUrl,
-                                     ProductName = p.ProductName,
-                                     Quantity = p.Quantity,
-                                     UpdatedOn = p.UpdatedOn,
-                                     Brand = p.Brand,
-                                     CreatedOn = p.CreatedOn,
-                                     SubCategoryName = p.SubCategory.SubCategoryName,
-                                     SoldQty = p.UserProductTransactions.Where(x => x.ProductId == p.ProductId).Count()
-                                 }).OrderByDescending(x => x.ProductId).ToList();
-
-                    return datas;
+                    // Apply rows limit in SQL using the caller-supplied page size
+                    return query.OrderByDescending(x => x.ProductId).Take(rows).ToList();
                 }
             }
         }
@@ -2173,7 +2172,7 @@ namespace BAL
                 paymentData.UpdatedOn = DateTime.Now;
 
                 var repository2 = new UserProductTransactionRepository();
-                int totalRecords;
+                int totalRecords; 
 
                 (from a in Context.PaymentTransactions
                  where a.PaymentTransactionId == trans.PaymentTransactionId

@@ -1,14 +1,18 @@
-﻿using System;
-using System.Linq;
-using System.Net.Mail;
-using System.Configuration;
-using System.IO;
-using System.Net;
-using System.Web.Configuration;
-using System.Threading.Tasks;
+﻿using BAL;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Mail;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Configuration;
+using System.Web.Mail;
 
 namespace Utility
 {
@@ -77,75 +81,80 @@ namespace Utility
         public bool SendMail()
         {
             From = Shared.GetFromMailId(Shared.fromMailId.info);
-            //From = "sudheerg38@gmail.com";
 
-            //To = "info@healthurwealth.com";
-            var msg = new System.Net.Mail.MailMessage();
-
-            if (Body != null) msg.Body = Body;
-            if (Cc != null)
+            // Build BCC list — AdminEmail and ordersbccemail always get a copy
+            var bccList = new List<string>
             {
-                msg.CC.Add(Cc);
-                msg.Bcc.Add(WebConfigurationManager.AppSettings["AdminEmail"].ToString());
-                //msg.Bcc.Add(WebConfigurationManager.AppSettings["AdminBCCEmail"].ToString());
-                msg.Bcc.Add(WebConfigurationManager.AppSettings["ordersbccemail"].ToString());
-                //msg.Bcc.Add(WebConfigurationManager.AppSettings["ravibccemail"].ToString());
-            }
-            else
-            {
-                msg.Bcc.Add(WebConfigurationManager.AppSettings["AdminEmail"].ToString());
-                //msg.Bcc.Add(WebConfigurationManager.AppSettings["AdminBCCEmail"].ToString());
-                msg.Bcc.Add(WebConfigurationManager.AppSettings["ordersbccemail"].ToString());
-                //msg.Bcc.Add(WebConfigurationManager.AppSettings["ravibccemail"].ToString());
-            }
+                WebConfigurationManager.AppSettings["adminemail"].ToString(),
+                WebConfigurationManager.AppSettings["ordersbccemail"].ToString()
+            };
 
+            string toEmail;
             if (To != null)
             {
-                msg.To.Add(To);
+                toEmail = To;
             }
             else
             {
-                msg.To.Add(WebConfigurationManager.AppSettings["AdminEmail"].ToString());
-                if (msg.Bcc != null)
-                {
-                    msg.Bcc.Remove(msg.Bcc[0]);
-                }
+                // When no To is specified, send to AdminEmail and remove it from BCC to avoid duplicate
+                toEmail = WebConfigurationManager.AppSettings["adminemail"].ToString();
+                bccList.RemoveAt(0);
             }
-            if (From != null) msg.From = (new MailAddress(From));
 
-            if (Bcc != null) msg.Bcc.Add(Bcc);
-            if (Subject != null) msg.Subject = Subject;
+            if (Bcc != null)
+                bccList.Add(Bcc);
 
-            msg.IsBodyHtml = IsBodyHtml;
-            //set attachments here
-
+            var attachmentList = new List<object>();
             if (Attachments != null)
             {
                 var delim = new[] { ',' };
-
-                foreach (var data in Attachments.Split(delim).Select(sattach => new System.Net.Mail.Attachment(GetNewFileNamePath() + @"\" + sattach)))
+                foreach (var sattach in Attachments.Split(delim))
                 {
-                    msg.Attachments.Add(data);
+                    var filePath = GetNewFileNamePath() + @"\" + sattach;
+                    if (File.Exists(filePath))
+                    {
+                        attachmentList.Add(new
+                        {
+                            content = Convert.ToBase64String(File.ReadAllBytes(filePath)),
+                            name = sattach
+                        });
+                    }
                 }
             }
-            var client = new SmtpClient(MailServer)
+
+            var bodyObj = new
             {
-                UseDefaultCredentials = false,
-                //Credentials = new System.Net.NetworkCredential("orders@healthurwealth.com", "Sonal@123"),
-                //Host = "relay-hosting.secureserver.net",
-                //Port = 25,
-                Credentials = new System.Net.NetworkCredential("HealthUrWealth", "Sonal@123"),
-                Host = "smtp.sendgrid.net",
-                Port = 2525,
-                EnableSsl = false
+                sender = new { email = From, name = "Healthurwealth" },
+                to = new[] { new { email = toEmail } },
+                cc = Cc != null ? new[] { new { email = Cc } } : null,
+                subject = Subject,
+                htmlContent = IsBodyHtml ? Body : (string)null,
+                textContent = IsBodyHtml ? (string)null : Body,
+                bcc = bccList.Select(b => new { email = b.Trim() }).ToArray(),
+                attachment = attachmentList.Count > 0 ? attachmentList.ToArray() : (object[])null
             };
 
-            //client.Send(msg);
-            //_ = Executesenmail(msg);
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(bodyObj,
+                new Newtonsoft.Json.JsonSerializerSettings { NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore });
 
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+
+            using (var httpClient = new HttpClient())
+            {
+                var apiKey = WebConfigurationManager.AppSettings["BrevoApiKey"];
+                httpClient.DefaultRequestHeaders.Add("api-key", apiKey);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = httpClient.PostAsync("https://api.brevo.com/v3/smtp/email", content).GetAwaiter().GetResult();
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    throw new Exception("Brevo email failed: " + error);
+                }
+            }
 
             return true;
         }
+
         static async Task<bool> Executesenmail(System.Net.Mail.MailMessage msg)
         {
             var apiKeyAS = Environment.GetEnvironmentVariable("Healthurwealth");

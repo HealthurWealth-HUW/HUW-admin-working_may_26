@@ -73,7 +73,9 @@ namespace Utility
         public Nullable<decimal> GST { get; set; }
         public string BatchNo { get; set; }
         public string HSNCode { get; set; }
-    
+        public string CdnProductImgUrl { get; set; }
+        public string CdnProductImgUrl2 { get; set; }
+
         public virtual ICollection<CheckOutUserProductTransaction> CheckOutUserProductTransactions { get; set; }
         public virtual ICollection<NoftifyMe> NoftifyMes { get; set; }
         public virtual ICollection<ProductFeature> ProductFeatures { get; set; }

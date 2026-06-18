@@ -3648,7 +3648,7 @@ function GetProductSearchLst() {
     var ProductStatus = $("#ddlProdcutStatus").val();
     var Brand = $("#ddlBrand").find("option:selected").text();
     $.ajax({
-        url: '../api/Master/GetProductListBySrch?rows=' + rows + '&ProdsuctId=' + ProductID + '&ProductName=' + ProductName + '&SuperCategory=' + SuperCategory + '&Category=' + Category + '&SubCategory=' + SubCategory + '&ProductStatus=' + ProductStatus + '&Brand=' + Brand + '&Quantity=' + Quantity,
+        url: '../api/Master/GetProductListBySrch?rows=' + rows + '&ProductId=' + ProductID + '&ProductName=' + ProductName + '&SuperCategory=' + SuperCategory + '&Category=' + Category + '&SubCategory=' + SubCategory + '&ProductStatus=' + ProductStatus + '&Brand=' + Brand + '&Quantity=' + Quantity,
         type: 'GET',
         dataType: 'json',
         success: function (data) {

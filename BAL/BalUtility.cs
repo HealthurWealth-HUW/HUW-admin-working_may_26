@@ -593,6 +593,7 @@ namespace BAL
                 body = body.Replace("##MobileNumber##", (Convert.ToString(UsrDtls.MobileNo)));
                 body = body.Replace("##ShipmentName##", (PaymntDtls.CourierName));
                 body = body.Replace("##ShipmentTrackingID##", (Convert.ToString(PaymntDtls.PaymentTransactionId)));
+                body = body.Replace("##AWBNo##", Convert.ToString(PaymntDtls.ShipmentId));
                 body = body.Replace("##order page##", "Order Page");
 
                 ms.Body = body;

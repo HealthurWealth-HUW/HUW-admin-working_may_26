@@ -431,7 +431,7 @@ public partial class Admin_AddProducts : System.Web.UI.Page
 
                 if (FileSize != 0)
                 {
-                    product.SizeGuidePath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles/Size_Chart/" + FileUpload2.PostedFile.FileName;
+                    product.SizeGuidePath = ConfigurationManager.AppSettings["SizeGuidePath"] + FileUpload2.PostedFile.FileName;
                     //  ProductGalleryImgs = Request.Files,
                 }
                 List<Product> freeProductItems = (List<Product>)BalUtility.GetSession(Shared.Sessions.FreeProductList) ?? new List<Product>();
@@ -529,7 +529,7 @@ public partial class Admin_AddProducts : System.Web.UI.Page
 
     public void UploadGallery(string ProductId)
     {
-        var galleryPath = @"C:\inetpub\wwwroot\HUW_live\UploadFiles\Gallery\";
+        string galleryPath = ConfigurationManager.AppSettings["GalleryPath"];
         if (FileUpload1.HasFile)
         {
             //SqlDataSource1.Insert();
@@ -579,26 +579,6 @@ public partial class Admin_AddProducts : System.Web.UI.Page
                 File.Delete(fullpath);
             }
             FileUpload2.SaveAs(fullpath);
-            //ArrayList zippedList = UnZipFile(ProductId, fullpath);  //method for Extracted the Zip File.
-
-            //string[] array1 = Directory.GetFiles(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Gallery/Size_Chart/"));
-            //string[] array2 = Directory.GetFiles(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/large/"));
-
-
-            //List<ProductsGallery> gallery = new List<ProductsGallery>();
-            //for (int i = 0; i < array1.Length; i++)
-            //{
-            //    gallery.Add(new ProductsGallery
-            //    {
-            //        ProductId = Convert.ToInt64(ProductId),
-            //        ImgUrl = "https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/small/" + Path.GetFileName(array1[i]),
-            //        LargeImgUrl = "https://www.healthurwealth.com/UploadFiles/Gallery/" + ProductId + "/large/" + Path.GetFileName(array2[i]),
-            //    });
-            //}
-
-            //var repository = new ProductsGalleryRepository();
-            //repository.Insert(gallery);
-            //File.Delete(Server.MapPath("https://www.healthurwealth.com/UploadFiles/Size_Chart/") + filename);
         }
     }
 
@@ -635,7 +615,7 @@ public partial class Admin_AddProducts : System.Web.UI.Page
 
                                 using (FileStream streamWriter = File.Create(strNewFile))
                                 {
-                                    pathList.Add(Path.Combine(@"C:\inetpub\wwwroot\HUW_live\UploadFiles\Gallery\" + ProductId + @"/", theEntry.Name));
+                                    pathList.Add(Path.Combine(ConfigurationManager.AppSettings["GalleryPath"] + ProductId + @"/", theEntry.Name));
                                     int size = 2048;
                                     byte[] data = new byte[2048];
                                     while (true)
