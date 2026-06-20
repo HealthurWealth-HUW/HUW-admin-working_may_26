@@ -30,8 +30,6 @@ using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using RestSharp;
-using Org.BouncyCastle.Ocsp;
-using Org.BouncyCastle.Asn1.Ocsp;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Office2013.Excel;
