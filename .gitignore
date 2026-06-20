@@ -185,6 +185,13 @@ _pkginfo.txt
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
 
+# UploadFiles holds runtime user-uploaded content — never commit these
+HUW/UploadFiles/*
+# Keep only the static AWB template file needed for the upload feature
+!HUW/UploadFiles/AWB/
+HUW/UploadFiles/AWB/*
+!HUW/UploadFiles/AWB/AWB_ExcelFormat/
+
 # Others
 ClientBin/
 ~$*
