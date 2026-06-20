@@ -157,8 +157,8 @@ PublishScripts/
 **/packages/*
 # except build/, which is used as an MSBuild target.
 !**/packages/build/
-# Uncomment if necessary however generally it will be regenerated when needed
-#!**/packages/repositories.config
+# Keep repositories.config so NuGet restore knows about all project package configs
+!**/packages/repositories.config
 # NuGet v3's project.json files produces more ignoreable files
 *.nuget.props
 *.nuget.targets
