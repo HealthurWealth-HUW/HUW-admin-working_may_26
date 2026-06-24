@@ -138,6 +138,7 @@
                     <div class="box submenu">
                         <div class="content">
                             <ul>
+                                <li><a href="AdminOrders.aspx">Orders Dashboard</a></li>
                                 <li id="liAddProductsSidetab" runat="server"><a href="AddProducts.aspx">Add Products</a></li>
                                 <li id="liActivateProductsSidetab" runat="server"><a href="ActivateProducts.aspx">Activate Products</a></li>
                                 <li id="liProductSearchSidetab" runat="server"><a href="ProductSearch.aspx">Search Products</a></li>

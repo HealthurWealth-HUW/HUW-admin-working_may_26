@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="adf8b5f3-6c50-4ea6-9445-aae119bedbe2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="ef7f0bfc-1589-4908-b311-d90869a6d70d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -18,10 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="D:\Zon_Projects\HUW Solution Feb5th\shipments-tracking-api-wsdl.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="http://ws.aramex.net/shippingapi/tracking/service_1_0.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service_1_0.wsdl" MetadataType="Wsdl" ID="ff32de46-9ad9-4715-b64f-3d4cd8b53cc0" SourceId="1" SourceUrl="file:///D:/Zon_Projects/HUW Solution Feb5th/shipments-tracking-api-wsdl.wsdl" />
+    <MetadataFile FileName="Service_1_0.wsdl" MetadataType="Wsdl" ID="af3c69f8-df55-476b-b126-e4caeb8213b7" SourceId="1" SourceUrl="http://ws.aramex.net/shippingapi/tracking/service_1_0.svc?wsdl" />
+    <MetadataFile FileName="Service_1_01.wsdl" MetadataType="Wsdl" ID="f6815786-a524-46b9-87e3-2856945623f6" SourceId="1" SourceUrl="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Service_1_0.xsd" MetadataType="Schema" ID="a21d7924-a9d0-4f13-804a-1c8ade88c72f" SourceId="1" SourceUrl="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service_1_01.xsd" MetadataType="Schema" ID="751a203c-43c3-494c-947a-7d52e31e26e3" SourceId="1" SourceUrl="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service_1_02.xsd" MetadataType="Schema" ID="03788269-83c0-4cce-9827-e97506ad864b" SourceId="1" SourceUrl="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

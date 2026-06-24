@@ -98,7 +98,7 @@
             Main.init();
             Login.init();
         });
-    </script>
+    <%--</script>--%>
 </body>
 </html>
 

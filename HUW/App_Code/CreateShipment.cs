@@ -338,28 +338,41 @@ public class CreateShipment
         try
         {
             client.Open();
-            bool her = true;
-            ServiceReference2.TrackingResult[] objTrackShipment = new ServiceReference2.TrackingResult[0];
 
-            System.Collections.Generic.Dictionary<string, ServiceReference2.TrackingResult[]> Obj = new Dictionary<string, ServiceReference2.TrackingResult[]>();
-            object data = new object();
-            bool LastTrackingUpdateOnly = false;
-            ServiceReference2.Notification[] objnot = new ServiceReference2.Notification[1];
-            objnot = client.TrackShipments(objclient, ref objtr, Shipments, LastTrackingUpdateOnly, out her, out Obj);
+            bool hasErrors;
 
-            //   objTrackShipment
+            bool getLastTrackingUpdateOnly = false;
+            bool getUpdateTimeZone = false;
+            bool getReferenceNumber = false;
 
-            List<ServiceReference2.TrackingResult> result = Obj[ShipmentID].ToList();
+            Dictionary<string, ServiceReference2.TrackingResult[]> trackingResults;
+
+            string[] nonExistingWaybills;
+
+            ServiceReference2.Notification[] notifications =
+                client.TrackShipments(
+                    objclient,
+                    ref objtr,
+                    Shipments,
+                    getLastTrackingUpdateOnly,
+                    getUpdateTimeZone,
+                    getReferenceNumber,
+                    out hasErrors,
+                    out trackingResults,
+                    out nonExistingWaybills
+                );
 
             client.Close();
 
-            return result;
+            if (trackingResults != null && trackingResults.ContainsKey(ShipmentID))
+                return trackingResults[ShipmentID].ToList();
+
+            return new List<ServiceReference2.TrackingResult>();
         }
         catch (Exception ex)
         {
             return null;
         }
-
     }
 
     public class ShipmentInfo

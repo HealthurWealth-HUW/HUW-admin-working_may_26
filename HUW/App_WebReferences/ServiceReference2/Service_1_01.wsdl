@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://ws.aramex.net/ShippingAPI/v1/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" targetNamespace="http://ws.aramex.net/ShippingAPI/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://ws.aramex.net/ShippingAPI/v1/Imports">
+      <xsd:import schemaLocation="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd0" namespace="http://ws.aramex.net/ShippingAPI/v1/" />
+      <xsd:import schemaLocation="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ShipmentTrackingRequest">
+    <wsdl:part name="parameters" element="tns:ShipmentTrackingRequest" />
+  </wsdl:message>
+  <wsdl:message name="ShipmentTrackingResponse">
+    <wsdl:part name="parameters" element="tns:ShipmentTrackingResponse" />
+  </wsdl:message>
+  <wsdl:message name="PickupTrackingRequest">
+    <wsdl:part name="parameters" element="tns:PickupTrackingRequest" />
+  </wsdl:message>
+  <wsdl:message name="PickupTrackingResponse">
+    <wsdl:part name="parameters" element="tns:PickupTrackingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShipmentTrackingDeliveryRequest">
+    <wsdl:part name="parameters" element="tns:ShipmentTrackingDeliveryRequest" />
+  </wsdl:message>
+  <wsdl:message name="ShipmentTrackingDeliveryResponse">
+    <wsdl:part name="parameters" element="tns:ShipmentTrackingDeliveryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service_1_0">
+    <wsdl:operation name="TrackShipments">
+      <wsdl:input wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/TrackShipments" name="ShipmentTrackingRequest" message="tns:ShipmentTrackingRequest" />
+      <wsdl:output wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/TrackShipmentsResponse" name="ShipmentTrackingResponse" message="tns:ShipmentTrackingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TrackPickup">
+      <wsdl:input wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/TrackPickup" name="PickupTrackingRequest" message="tns:PickupTrackingRequest" />
+      <wsdl:output wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/TrackPickupResponse" name="PickupTrackingResponse" message="tns:PickupTrackingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HasShipmentBeenDelivered">
+      <wsdl:input wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/HasShipmentBeenDelivered" name="ShipmentTrackingDeliveryRequest" message="tns:ShipmentTrackingDeliveryRequest" />
+      <wsdl:output wsaw:Action="http://ws.aramex.net/ShippingAPI/v1/Service_1_0/HasShipmentBeenDeliveredResponse" name="ShipmentTrackingDeliveryResponse" message="tns:ShipmentTrackingDeliveryResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

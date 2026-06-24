@@ -41,7 +41,9 @@ namespace Utilities
                 throw new InvalidOperationException(
                     "CDN upload failed: " + (int)res.StatusCode + " " + res.ReasonPhrase + " | " + body);
             }
-            return targetUrl;
+            string baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
+
+            return baseUrl.TrimEnd('/') + "/" + folder + "/" + uniqueName;
         }
     }
 }

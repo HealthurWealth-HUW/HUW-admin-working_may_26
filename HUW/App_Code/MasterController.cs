@@ -16444,9 +16444,16 @@ Order Current Status:<a id='statuslbl' >" + item.Orderdeliverystatus + @"</a><br
                                 <p>");
                 foreach (var items in datas)
                 {
-                    strResult.Append(@" <div class='product_image fl_left'>
-								<img src = " + "https://healthurwealth.com/" + items.Prescription_Image + @"  id='imgProductImage' style='width: 84.989;height: 94.989;padding-left: 20px;'>
-                                                  </div>");
+                    string imageUrl = items.Prescription_Image
+                        .Replace(
+                            "https://sg.storage.bunnycdn.com/healthurwealth-p",
+                            "https://healthurwealth.b-cdn.net");
+
+                    strResult.Append(@"<div class='product_image fl_left'>
+        <img src='" + imageUrl + @"'
+             id='imgProductImage'
+             style='width:84.989px;height:94.989px;padding-left:20px;'>
+    </div>");
                 }
             }
             strResult.Append(@"</p>
@@ -22152,6 +22159,189 @@ Please follow us on instagram to get more updates on offers and products https:/
             Result = null
         };
 
+    }
+    [HttpGet]
+    public CustomResponse GetOrdersKPI(string startDate, string endDate)
+    {
+        try
+        {
+            string constr = ConfigurationManager.ConnectionStrings["db_Zon_constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlCommand cmd = new SqlCommand("SP_GetOrdersKPI", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(startDate));
+                cmd.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(endDate));
+                con.Open();
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    if (r.Read())
+                    {
+                        return new CustomResponse
+                        {
+                            Status = Shared.ResponseStatus.Success.ToString(),
+                            Result = new
+                            {
+                                totalOrders = r.GetInt32(0),
+                                totalOrdersTrend = r.GetDecimal(1),
+                                completedOrders = r.GetInt32(2),
+                                completedOrdersTrend = r.GetDecimal(3),
+                                productsSold = r.GetInt32(4),
+                                productsSoldTrend = r.GetDecimal(5)
+                            }
+                        };
+                    }
+                }
+            }
+            return new CustomResponse { Status = Shared.ResponseStatus.NoData.ToString() };
+        }
+        catch (Exception ex)
+        {
+            return new CustomResponse { Status = Shared.ResponseStatus.Fail.ToString(), Message = ex.Message };
+        }
+    }
+
+    [HttpGet]
+    public CustomResponse GetTopProductsByOrders(string startDate, string endDate)
+    {
+        try
+        {
+            string constr = ConfigurationManager.ConnectionStrings["db_Zon_constr"].ConnectionString;
+            var products = new System.Collections.Generic.List<object>();
+            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlCommand cmd = new SqlCommand("SP_GetTopProductsByOrders", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(startDate));
+                cmd.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(endDate));
+                con.Open();
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        products.Add(new
+                        {
+                            productId = r.GetInt64(0),
+                            productName = r.IsDBNull(1) ? "" : r.GetString(1),
+                            unitsSold = r.GetInt32(2)
+                        });
+                    }
+                }
+            }
+            return new CustomResponse { Status = Shared.ResponseStatus.Success.ToString(), Result = products };
+        }
+        catch (Exception ex)
+        {
+            return new CustomResponse { Status = Shared.ResponseStatus.Fail.ToString(), Message = ex.Message };
+        }
+    }
+    [HttpGet]
+    public CustomResponse GetTopCategoriesByOrders(string startDate, string endDate)
+    {
+        try
+        {
+            string constr = ConfigurationManager.ConnectionStrings["db_Zon_constr"].ConnectionString;
+
+            var categories = new List<object>();
+
+            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlCommand cmd = new SqlCommand("SP_GetTopCategoriesByOrders", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(startDate));
+                cmd.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(endDate));
+
+                con.Open();
+
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        categories.Add(new
+                        {
+                            categoryId = r.GetInt64(0),
+                            categoryName = r.GetString(1),
+                            unitsSold = r.GetInt32(2)
+                        });
+                    }
+                }
+            }
+
+            return new CustomResponse
+            {
+                Status = Shared.ResponseStatus.Success.ToString(),
+                Result = categories
+            };
+        }
+        catch (Exception ex)
+        {
+            return new CustomResponse
+            {
+                Status = Shared.ResponseStatus.Fail.ToString(),
+                Message = ex.Message
+            };
+        }
+    }
+
+    [HttpGet]
+    public CustomResponse GetOrdersTableData(string startDate, string endDate, int pageNumber = 1, int pageSize = 10)
+    {
+        try
+        {
+            string constr = ConfigurationManager.ConnectionStrings["db_Zon_constr"].ConnectionString;
+            var rows = new System.Collections.Generic.List<object>();
+            int totalRecords = 0;
+            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlCommand cmd = new SqlCommand("SP_GetOrdersTableData", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(startDate));
+                cmd.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(endDate));
+                cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
+                cmd.Parameters.AddWithValue("@PageSize", pageSize);
+                con.Open();
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        totalRecords = r.GetInt32(9);
+                        rows.Add(new
+                        {
+                            rank = Convert.ToInt32(r[0]),
+                            productId = r.GetInt64(1),
+                            productName = r.IsDBNull(2) ? "" : r.GetString(2),
+                            unitsSold = Convert.ToInt32(r[3]),
+                            revenueGenerated = Convert.ToDecimal(r[4]),
+                            orders = Convert.ToInt32(r[5]),
+                            growthPercent = Convert.ToDecimal(r[6]),
+                            stockLeft = Convert.ToInt32(r[7]),
+                            stockStatus = r.IsDBNull(8) ? "In Stock" : r.GetString(8),
+                            totalRecords = Convert.ToInt32(r[9])
+                        });
+                    }
+                }
+            }
+            return new CustomResponse
+            {
+                Status = Shared.ResponseStatus.Success.ToString(),
+                Result = new
+                {
+                    data = rows,
+                    pagination = new
+                    {
+                        pageNumber,
+                        pageSize,
+                        totalRecords,
+                        totalPages = (int)Math.Ceiling((double)totalRecords / pageSize)
+                    }
+                }
+            };
+        }
+        catch (Exception ex)
+        {
+            return new CustomResponse { Status = Shared.ResponseStatus.Fail.ToString(), Message = ex.Message };
+        }
     }
     [HttpPost]
     public void Updatedoctorname(long transid, string doctorname)
