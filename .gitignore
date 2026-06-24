@@ -21,6 +21,8 @@ bld/
 [Bb]in/
 # HUW is a Web Site project — its Bin folder holds third-party and custom DLLs that must be committed
 !HUW/Bin/
+# Exclude the publish output subfolder — it is not source and causes recursive packaging
+HUW/Bin/Release/Publish/
 [Oo]bj/
 [Ll]og/
 

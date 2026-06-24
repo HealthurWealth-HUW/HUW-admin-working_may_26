@@ -9,26 +9,6 @@ using System.Web.Http.Filters;
 //using DAL;
 using Utility;
 
-public class IpHostValidationAttribute : ActionFilterAttribute
-{
-    public override void OnActionExecuting(HttpActionContext actionContext)
-    {
-        var context = actionContext.Request.Properties["MS_HttpContext"] as System.Web.HttpContextBase;
-        string userIp = context.Request.UserHostAddress;
-        try
-        {
-          // AuthorizedIpRepository.GetAuthorizedIPs().First(x => x == userIp);
-        }
-        catch (Exception)
-        {
-            actionContext.Response =new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden)
-               {
-                   Content = new StringContent("Unauthorized IP Address")
-               };
-            return;
-        }
-    }
-}
 
 public class AuthorizedIpRepository
 {
